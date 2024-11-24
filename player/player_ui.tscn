@@ -1,0 +1,161 @@
+[gd_scene load_steps=10 format=3 uid="uid://bhwitv71nor4g"]
+
+[ext_resource type="Script" path="res://player/player_ui.gd" id="1_pjam5"]
+[ext_resource type="FontFile" uid="uid://bj7d61dymsjdn" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="2_36gg2"]
+[ext_resource type="LabelSettings" uid="uid://dmsw0foi21e0n" path="res://assets/fonts/red_player_ui.tres" id="2_fjgnx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gl522"]
+font = ExtResource("2_36gg2")
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dv3hr"]
+font = ExtResource("2_36gg2")
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6gbwo"]
+font = ExtResource("2_36gg2")
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p8v16"]
+font = ExtResource("2_36gg2")
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qfvsp"]
+font = ExtResource("2_36gg2")
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_810bs"]
+font = ExtResource("2_36gg2")
+font_color = Color(0, 1, 0, 1)
+
+[node name="Control" type="Control"]
+process_mode = 3
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pjam5")
+
+[node name="background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.918
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.135986
+color = Color(0.241156, 0.241156, 0.241156, 1)
+
+[node name="dash_label" type="Label" parent="background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.039
+anchor_bottom = 1.0
+offset_right = 0.0719986
+text = "dash"
+label_settings = SubResource("LabelSettings_gl522")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="dash_status" type="Label" parent="background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.039
+anchor_right = 0.148
+anchor_bottom = 1.0
+offset_left = 0.0719986
+offset_right = 0.503998
+text = "[..........]"
+label_settings = SubResource("LabelSettings_dv3hr")
+vertical_alignment = 1
+text_overrun_behavior = 1
+
+[node name="health_status" type="Label" parent="background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.94
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.880127
+grow_horizontal = 0
+text = "10/10"
+label_settings = ExtResource("2_fjgnx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="health_label" type="Label" parent="background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.87
+anchor_right = 0.939
+anchor_bottom = 1.0
+offset_left = -0.240051
+offset_right = 0.271973
+text = "VITALITY"
+label_settings = SubResource("LabelSettings_6gbwo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="log_line1" type="Label" parent="background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.361
+anchor_right = 0.655
+anchor_bottom = 0.377
+offset_left = 0.12796
+offset_top = 1.0
+offset_right = 0.440063
+offset_bottom = -1.981
+text = "sample text"
+label_settings = SubResource("LabelSettings_p8v16")
+
+[node name="log_line2" type="Label" parent="background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.361
+anchor_right = 0.655
+anchor_bottom = 0.377
+offset_left = 0.12796
+offset_top = 18.0
+offset_right = 0.440063
+offset_bottom = 15.019
+text = "sample text"
+label_settings = SubResource("LabelSettings_qfvsp")
+
+[node name="log_line3" type="Label" parent="background"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.361
+anchor_right = 0.655
+anchor_bottom = 0.377
+offset_left = 0.12796
+offset_top = 35.0
+offset_right = 0.440063
+offset_bottom = 32.019
+text = "sample text"
+label_settings = SubResource("LabelSettings_810bs")
+
+[node name="screen_flash" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(1, 1, 1, 0.341176)
+
+[node name="flash_timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="log_line_timer1" type="Timer" parent="."]
+
+[node name="log_line_timer2" type="Timer" parent="."]
+
+[node name="log_line_timer3" type="Timer" parent="."]
+
+[connection signal="timeout" from="flash_timer" to="." method="_on_flash_timer_timeout"]
+[connection signal="timeout" from="log_line_timer1" to="." method="_on_log_line_timer_1_timeout"]
+[connection signal="timeout" from="log_line_timer2" to="." method="_on_log_line_timer_2_timeout"]
+[connection signal="timeout" from="log_line_timer3" to="." method="_on_log_line_timer_3_timeout"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://7f7a75jye8wi"]
+
+[ext_resource type="Script" path="res://misc_objects/bullet/bullet.gd" id="1_5bedm"]
+[ext_resource type="Material" uid="uid://cpspjicc0lw8u" path="res://misc_objects/bullet/active_bullet.tres" id="2_x8lfy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g8acp"]
+size = Vector3(0.1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_j2msa"]
+material = ExtResource("2_x8lfy")
+size = Vector3(0.05, 0.05, 1.5)
+
+[node name="bullet" type="CharacterBody3D" groups=["projectiles"]]
+collision_layer = 10
+collision_mask = 7
+script = ExtResource("1_5bedm")
+
+[node name="hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.701919)
+shape = SubResource("BoxShape3D_g8acp")
+
+[node name="rig" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.701919)
+mesh = SubResource("BoxMesh_j2msa")

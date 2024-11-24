@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://4s1bmn1wis06"]
+
+[ext_resource type="Script" path="res://enemies/melee_enemy/melee_enemy.gd" id="1_ss501"]
+[ext_resource type="PackedScene" uid="uid://cvcf843n4wy3r" path="res://misc_objects/health_display/health_display.tscn" id="2_max82"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rige0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgi8o"]
+albedo_color = Color(0, 0, 0, 1)
+emission = Color(0.475553, 0, 0.116346, 1)
+emission_energy_multiplier = 0.87
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sxtln"]
+material = SubResource("StandardMaterial3D_sgi8o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7elfn"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tp77r"]
+material = SubResource("StandardMaterial3D_7elfn")
+size = Vector3(0.7, 0.1, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fv6pt"]
+size = Vector3(1, 2, 1)
+
+[node name="melee_enemy" type="CharacterBody3D"]
+collision_layer = 5
+collision_mask = 9
+script = ExtResource("1_ss501")
+
+[node name="hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_rige0")
+
+[node name="rig" type="Node3D" parent="."]
+
+[node name="body" type="MeshInstance3D" parent="rig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_sxtln")
+skeleton = NodePath("../..")
+
+[node name="eyes" type="MeshInstance3D" parent="rig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44034, -0.321442)
+mesh = SubResource("BoxMesh_tp77r")
+
+[node name="melee_hitbox" type="Area3D" parent="rig" groups=["parriable_melee"]]
+collision_layer = 4
+collision_mask = 2
+
+[node name="melee_col" type="CollisionShape3D" parent="rig/melee_hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.07077)
+shape = SubResource("BoxShape3D_fv6pt")
+disabled = true
+
+[node name="melee_marker" type="Marker3D" parent="rig/melee_hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.631008)
+
+[node name="navigation_agent" type="NavigationAgent3D" parent="."]
+
+[node name="health_display" parent="." instance=ExtResource("2_max82")]
+transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 0, 1.0151, 0)
+
+[node name="melee_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="rig/melee_hitbox" to="." method="_on_melee_hitbox_body_entered"]
+[connection signal="timeout" from="melee_timer" to="." method="_on_melee_timer_timeout"]

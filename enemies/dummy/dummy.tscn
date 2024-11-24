@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://8xqa4j6kwihe"]
+
+[ext_resource type="Script" path="res://enemies/dummy/dummy.gd" id="1_f77f1"]
+[ext_resource type="Texture2D" uid="uid://2g4yjvxmkmwo" path="res://assets/textures/dummy_texture.jpg" id="2_cswde"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sybhw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojob2"]
+albedo_texture = ExtResource("2_cswde")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wvonf"]
+material = SubResource("StandardMaterial3D_ojob2")
+
+[node name="dummy" type="CharacterBody3D"]
+collision_layer = 4
+script = ExtResource("1_f77f1")
+
+[node name="hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_sybhw")
+
+[node name="skin" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_wvonf")

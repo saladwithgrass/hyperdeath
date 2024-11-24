@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dmsw0foi21e0n"]
+
+[ext_resource type="FontFile" uid="uid://bj7d61dymsjdn" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="1_bqudj"]
+
+[resource]
+font = ExtResource("1_bqudj")
+font_color = Color(1, 0, 0, 1)

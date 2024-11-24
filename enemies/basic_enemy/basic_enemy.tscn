@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://ckdsprtl103sa"]
+
+[ext_resource type="Script" path="res://enemies/basic_enemy/basic_enemy.gd" id="1_lmakk"]
+[ext_resource type="PackedScene" uid="uid://cvcf843n4wy3r" path="res://misc_objects/health_display/health_display.tscn" id="2_oeks0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8oy3f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qejme"]
+albedo_color = Color(0.235294, 0.34902, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_oixk8"]
+material = SubResource("StandardMaterial3D_qejme")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ukus7"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3xuxt"]
+material = SubResource("StandardMaterial3D_ukus7")
+size = Vector3(0.2, 0.15, 0.555)
+
+[node name="basic_enemy" type="CharacterBody3D"]
+collision_layer = 4
+script = ExtResource("1_lmakk")
+
+[node name="hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_8oy3f")
+
+[node name="rig" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="skin" type="MeshInstance3D" parent="rig"]
+mesh = SubResource("CapsuleMesh_oixk8")
+skeleton = NodePath("../..")
+
+[node name="eyes" type="MeshInstance3D" parent="rig"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.009, 0.508, -0.423231)
+mesh = SubResource("BoxMesh_3xuxt")
+skeleton = NodePath("../..")
+
+[node name="LOS_marker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="LOS" type="RayCast3D" parent="LOS_marker"]
+transform = Transform3D(1, 0, 0, 0, 0.000575976, -1, 0, 1, 0.000575976, 0, 0.511462, -1.02051)
+target_position = Vector3(0, -20, 0)
+collision_mask = 7
+
+[node name="gun_muzzle_rig" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="gun_muzzle" type="Marker3D" parent="gun_muzzle_rig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.511462, -1.02051)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="health_display" parent="." instance=ExtResource("2_oeks0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

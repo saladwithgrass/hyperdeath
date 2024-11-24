@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3pnbnf0bq8vw"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cktg5"]
+points = PackedVector3Array(1, 0, 2, -1, 0, -1, -1, 0, 2, 1, 0, -1, -1, 1, -1, 1, 1, -1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_mt1pg"]
+left_to_right = 0.0
+
+[node name="ramp" type="StaticBody3D"]
+
+[node name="ramp_hitbox" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_cktg5")
+
+[node name="ramp_skin" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.31134e-07, 0, -2, 0, 1, 0, 3, 0, -8.74228e-08, 0, 0.5, 0.5)
+mesh = SubResource("PrismMesh_mt1pg")

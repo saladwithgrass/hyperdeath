@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7xq2a0a3vmk1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_thxkf"]
+size = Vector3(10, 3, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1yw7"]
+size = Vector3(10, 3, 0.6)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0ohev"]
+height = 3.0
+radius = 1.0
+
+[node name="long_wall" type="StaticBody3D" groups=["walls"]]
+
+[node name="skin" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_thxkf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_m1yw7")
+
+[node name="arounder1" type="Area3D" parent="." groups=["arounders"]]
+
+[node name="hitbox" type="CollisionShape3D" parent="arounder1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99582, 0, 0)
+shape = SubResource("CylinderShape3D_0ohev")
+
+[node name="control point" type="Marker3D" parent="arounder1"]
+transform = Transform3D(-0.999999, 0, -0.00139633, 0, 1, 0, 0.00139633, 0, -0.999999, 5.98966, 0, -0.00836354)
+
+[node name="arounder2" type="Area3D" parent="." groups=["arounders"]]
+transform = Transform3D(-0.999999, 0, -0.00139633, 0, 1, 0, 0.00139633, 0, -0.999999, 0, 0, 0)
+
+[node name="hitbox" type="CollisionShape3D" parent="arounder2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.99582, 0, 0)
+shape = SubResource("CylinderShape3D_0ohev")
+
+[node name="control point" type="Marker3D" parent="arounder2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00175, 0, 0.016744)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bym8xqibp8xts"]
+
+[ext_resource type="Script" path="res://player/weapons/railgun/blue_ray.gd" id="1_txc86"]
+[ext_resource type="Material" uid="uid://dnjubmw6th8a4" path="res://player/weapons/railgun/blue_ray.tres" id="2_ni4p4"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nanfq"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 1.0
+
+[node name="blue_ray" type="StaticBody3D"]
+script = ExtResource("1_txc86")
+
+[node name="ray_mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.5)
+mesh = SubResource("CylinderMesh_nanfq")
+surface_material_override/0 = ExtResource("2_ni4p4")

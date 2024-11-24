@@ -1,0 +1,136 @@
+[gd_scene load_steps=20 format=3 uid="uid://7dfvuspo0x3r"]
+
+[ext_resource type="Texture2D" uid="uid://b1k8dolm13n1l" path="res://assets/textures/cursor.png" id="1_n1jjx"]
+[ext_resource type="Script" path="res://player/player.gd" id="1_p2a6n"]
+[ext_resource type="PackedScene" uid="uid://cx4tcmoy3cfo5" path="res://player/weapons/Pistol.tscn" id="2_6m2sf"]
+[ext_resource type="PackedScene" uid="uid://bhwitv71nor4g" path="res://player/player_ui.tscn" id="2_t5gin"]
+[ext_resource type="PackedScene" uid="uid://5l7gk84ff7bb" path="res://player/weapons/assault_rifle/assault_rifle.tscn" id="3_38xsd"]
+[ext_resource type="Texture2D" uid="uid://ctei0e6qkqbpw" path="res://assets/textures/floor.png" id="3_s7yut"]
+[ext_resource type="PackedScene" uid="uid://byvb2lvonwfuk" path="res://player/weapons/railgun/railgun_v_1.tscn" id="4_nsd2h"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5jh1l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vcgs4"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ti5kd"]
+material = SubResource("StandardMaterial3D_vcgs4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yc3jg"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_7ilc5"]
+material = SubResource("StandardMaterial3D_yc3jg")
+size = Vector3(0.6, 0.15, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l8fja"]
+size = Vector3(1.7, 2.5, 1.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3j2v"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_h0x66"]
+material = SubResource("StandardMaterial3D_g3j2v")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dm4me"]
+transparency = 1
+albedo_texture = ExtResource("1_n1jjx")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1ddfy"]
+material = SubResource("StandardMaterial3D_dm4me")
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4k7m7"]
+albedo_texture = ExtResource("3_s7yut")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rl20y"]
+material = SubResource("StandardMaterial3D_4k7m7")
+size = Vector2(20, 20)
+
+[node name="player" type="CharacterBody3D" groups=["player_group"]]
+collision_layer = 2
+collision_mask = 13
+safe_margin = 0.05
+script = ExtResource("1_p2a6n")
+
+[node name="hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_5jh1l")
+
+[node name="camera_rig" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="player_cam" type="Camera3D" parent="camera_rig"]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -10, 6, 10)
+v_offset = 5.0
+projection = 1
+size = 35.108
+
+[node name="rig" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="body" type="MeshInstance3D" parent="rig"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_ti5kd")
+skeleton = NodePath("")
+
+[node name="eyes" type="MeshInstance3D" parent="rig"]
+transform = Transform3D(-1, -8.74228e-08, -4.37114e-08, 4.37114e-08, 1.91069e-15, -1, 8.74228e-08, -1, 1.91069e-15, 0, 0.508, -0.490474)
+mesh = SubResource("PrismMesh_7ilc5")
+skeleton = NodePath("../..")
+
+[node name="gun_muzzle" type="Marker3D" parent="rig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.435522, 0, -0.335223)
+
+[node name="Pistol" parent="rig/gun_muzzle" instance=ExtResource("2_6m2sf")]
+transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
+
+[node name="assault_rifle" parent="rig/gun_muzzle" instance=ExtResource("3_38xsd")]
+visible = false
+
+[node name="railgun v1" parent="rig/gun_muzzle" instance=ExtResource("4_nsd2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.266793, 0, 0)
+visible = false
+
+[node name="muzzle_visual" type="MeshInstance3D" parent="rig"]
+
+[node name="melee_hitbox" type="Area3D" parent="rig" groups=["damage_area", "parry_area"]]
+collision_layer = 2
+collision_mask = 12
+
+[node name="melee_col" type="CollisionShape3D" parent="rig/melee_hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, -1.504)
+shape = SubResource("BoxShape3D_l8fja")
+disabled = true
+
+[node name="cursor" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.654)
+
+[node name="cursor_ball" type="MeshInstance3D" parent="cursor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("SphereMesh_h0x66")
+skeleton = NodePath("../..")
+
+[node name="cursor_floor" type="MeshInstance3D" parent="cursor"]
+mesh = SubResource("PlaneMesh_1ddfy")
+
+[node name="ui" parent="." instance=ExtResource("2_t5gin")]
+
+[node name="temp_floor" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("PlaneMesh_rl20y")
+
+[node name="melee_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="dash_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="rig/melee_hitbox" to="." method="_on_melee_hitbox_area_entered"]
+[connection signal="body_entered" from="rig/melee_hitbox" to="." method="_on_melee_hitbox_body_entered"]
+[connection signal="body_exited" from="rig/melee_hitbox" to="." method="_on_melee_hitbox_body_exited"]
+[connection signal="timeout" from="melee_timer" to="." method="_on_melee_timer_timeout"]
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
