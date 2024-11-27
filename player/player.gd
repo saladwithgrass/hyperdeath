@@ -6,7 +6,7 @@ var enemy_scene = preload("res://enemies/basic_enemy/basic_enemy.tscn")
 var melee_enemy_scene = preload("res://enemies/melee_enemy/melee_enemy.tscn")
 var dummy_scene = preload("res://enemies/dummy/dummy.tscn")
 # child nodes
-@onready var camera = $camera_rig/player_cam
+@onready var camera = $camera_rig/camera_spring/player_cam
 @onready var cursor = $cursor
 @onready var rig = $rig
 @onready var gun_muzzle = $rig/gun_muzzle
@@ -287,4 +287,3 @@ func damage_log(who:String, damage:int):
 
 func kill_log(who:String):
 	ui.kill_log(who)
-
