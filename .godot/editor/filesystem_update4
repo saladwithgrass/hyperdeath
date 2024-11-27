@@ -1,0 +1,5 @@
+res://levels/test_level/test_level.tscn
+res://player/player.tscn
+res://player/camera_3_pv.tscn
+res://player/player_hud.tscn
+res://player/player_ui.gd

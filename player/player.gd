@@ -57,10 +57,7 @@ var vitality_timer = -1
 @onready var weapons = [pistol, assault_rifle, railgun]
 var current_weapon = 0
 
-@onready var camera = $camera3pv/Camera3D
-
 func _ready():
-	print($camera3pv.main_cam)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	health = Globals.player_health
 	$temp_floor.visible = false
@@ -83,8 +80,8 @@ func look_at_cursor():
 	var drop_plane = Plane(Vector3(0, 1, 0), player_pos.y)
 	var ray_len = 1000
 	var mouse_pos = get_viewport().get_mouse_position()
-	var from = camera.project_ray_origin(mouse_pos)
-	var to = from + camera.project_ray_normal(mouse_pos) * ray_len
+	var from = get_parent_node_3d().get_mouse_projection()
+	var to = from + get_parent_node_3d().get_mouse_projection() * ray_len
 	var cursor_pos = drop_plane.intersects_ray(from, to)
 	if cursor_pos != null:
 		cursor.global_transform.origin = cursor_pos # + Vector3(0, 1, 0)

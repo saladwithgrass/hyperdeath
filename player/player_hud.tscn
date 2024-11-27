@@ -1,31 +1,31 @@
 [gd_scene load_steps=10 format=3 uid="uid://bhwitv71nor4g"]
 
-[ext_resource type="Script" path="res://player/player_ui.gd" id="1_pjam5"]
-[ext_resource type="FontFile" uid="uid://bj7d61dymsjdn" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="2_36gg2"]
-[ext_resource type="LabelSettings" uid="uid://dmsw0foi21e0n" path="res://assets/fonts/red_player_ui.tres" id="2_fjgnx"]
+[ext_resource type="Script" path="res://player/player_hud.gd" id="1_g548d"]
+[ext_resource type="FontFile" uid="uid://bj7d61dymsjdn" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="2_yva1j"]
+[ext_resource type="LabelSettings" uid="uid://dmsw0foi21e0n" path="res://assets/fonts/red_player_ui.tres" id="3_ykr26"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gl522"]
-font = ExtResource("2_36gg2")
+font = ExtResource("2_yva1j")
 font_color = Color(0, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_dv3hr"]
-font = ExtResource("2_36gg2")
+font = ExtResource("2_yva1j")
 font_color = Color(0, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6gbwo"]
-font = ExtResource("2_36gg2")
+font = ExtResource("2_yva1j")
 font_color = Color(0, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_p8v16"]
-font = ExtResource("2_36gg2")
+font = ExtResource("2_yva1j")
 font_color = Color(0, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qfvsp"]
-font = ExtResource("2_36gg2")
+font = ExtResource("2_yva1j")
 font_color = Color(0, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_810bs"]
-font = ExtResource("2_36gg2")
+font = ExtResource("2_yva1j")
 font_color = Color(0, 1, 0, 1)
 
 [node name="Control" type="Control"]
@@ -37,7 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pjam5")
+script = ExtResource("1_g548d")
 
 [node name="background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -81,7 +81,7 @@ anchor_bottom = 1.0
 offset_left = -0.880127
 grow_horizontal = 0
 text = "10/10"
-label_settings = ExtResource("2_fjgnx")
+label_settings = ExtResource("3_ykr26")
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -6,3 +6,6 @@
 script = ExtResource("1_mc2wy")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+v_offset = 5.0
+projection = 1
+size = 35.0

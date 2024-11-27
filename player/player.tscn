@@ -1,10 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://7dfvuspo0x3r"]
+[gd_scene load_steps=20 format=3 uid="uid://7dfvuspo0x3r"]
 
 [ext_resource type="Texture2D" uid="uid://b1k8dolm13n1l" path="res://assets/textures/cursor.png" id="1_n1jjx"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_p2a6n"]
-[ext_resource type="PackedScene" uid="uid://dgtkkjpxyghvf" path="res://player/camera_3_pv.tscn" id="2_5xpma"]
 [ext_resource type="PackedScene" uid="uid://cx4tcmoy3cfo5" path="res://player/weapons/Pistol.tscn" id="2_6m2sf"]
-[ext_resource type="PackedScene" uid="uid://bhwitv71nor4g" path="res://player/player_ui.tscn" id="2_t5gin"]
+[ext_resource type="PackedScene" uid="uid://bhwitv71nor4g" path="res://player/player_hud.tscn" id="2_t5gin"]
 [ext_resource type="PackedScene" uid="uid://5l7gk84ff7bb" path="res://player/weapons/assault_rifle/assault_rifle.tscn" id="3_38xsd"]
 [ext_resource type="Texture2D" uid="uid://ctei0e6qkqbpw" path="res://assets/textures/floor.png" id="3_s7yut"]
 [ext_resource type="PackedScene" uid="uid://byvb2lvonwfuk" path="res://player/weapons/railgun/railgun_v_1.tscn" id="4_nsd2h"]
@@ -56,9 +55,6 @@ collision_layer = 2
 collision_mask = 13
 safe_margin = 0.05
 script = ExtResource("1_p2a6n")
-
-[node name="camera3pv" parent="." instance=ExtResource("2_5xpma")]
-transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -10, 6, 10)
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
