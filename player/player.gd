@@ -6,7 +6,6 @@ var enemy_scene = preload("res://enemies/basic_enemy/basic_enemy.tscn")
 var melee_enemy_scene = preload("res://enemies/melee_enemy/melee_enemy.tscn")
 var dummy_scene = preload("res://enemies/dummy/dummy.tscn")
 # child nodes
-@onready var camera = $camera_rig/camera_spring/player_cam
 @onready var cursor = $cursor
 @onready var rig = $rig
 @onready var gun_muzzle = $rig/gun_muzzle
@@ -58,7 +57,10 @@ var vitality_timer = -1
 @onready var weapons = [pistol, assault_rifle, railgun]
 var current_weapon = 0
 
+@onready var camera = $camera3pv/Camera3D
+
 func _ready():
+	print($camera3pv.main_cam)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	health = Globals.player_health
 	$temp_floor.visible = false
