@@ -47,20 +47,10 @@ func _ready() -> void:
 	var up_3d_pos = project_screen_to_plane(Vector2(viewport_size.x / 2, 0))
 	up_direction = (up_3d_pos - center_3d_pos).normalized()
 	
-	var marker_scene = load("res://misc_objects/quick_marker/quick_marker.tscn")
-	var marker = marker_scene.instantiate()
-	owner.add_child.call_deferred(marker)
-	marker.position = up_3d_pos
 	# then get a vector from center to right center
-	var right_3d_pos = -project_screen_to_plane(Vector2(0, viewport_size.y/2))
+	var right_3d_pos = project_screen_to_plane(Vector2(0, viewport_size.y/2))
 	right_direction = (right_3d_pos - center_3d_pos).normalized()
-	marker = marker_scene.instantiate()
-	owner.add_child.call_deferred(marker)
-	marker.position = right_3d_pos
-	
-	marker = marker_scene.instantiate()
-	owner.add_child.call_deferred(marker)
-	marker.position = center_3d_pos / 3 
+
 	# FIXME maybe a bug here since right_direction x and y must be same
 
 func get_follow_position_on_screen() -> Vector2i:
@@ -77,8 +67,8 @@ func _process(delta: float) -> void:
 	
 	# convert forces to 3d
 	var forces_3d = Vector3.ZERO
-	forces_3d += forces.y * up_direction
-	# forces_3d += forces.x * right_direction
+	# forces_3d += forces.y * up_direction
+	forces_3d += forces.x * right_direction
 	forces_3d -= velocity  * spring_damp
 	velocity += forces_3d * delta
 	position += velocity * delta
