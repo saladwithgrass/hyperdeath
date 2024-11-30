@@ -1,35 +1,35 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1732736334
+::res://::1732987512
 gdd.md::TextFile::-1::1732530911::0::1::::<><>::
-icon.svg::CompressedTexture2D::823965156111717938::1732530911::1732531141::1::::<><>::
+icon.svg::CompressedTexture2D::823965156111717938::1732530911::1732736531::1::::<><>::
 red shot.tres::VisualShader::7481467673760984187::1732530911::0::1::::<><>::
 sh.gdshader::Shader::-1::1732530911::0::1::::<><>::
 shshsh.tres::VisualShader::631289914533886224::1732530911::0::1::::<><>::
 tasks.md::TextFile::-1::1732728326::0::1::::<><>::
 ::res://assets/::1732530911
-::res://assets/fonts/::1732531141
+::res://assets/fonts/::1732736531
 green_player_ui.tres::LabelSettings::3272317982028705155::1732530911::0::1::::<><>::uid://05r318aa5em2::::res://assets/fonts/ui_font.ttf
-HomeVideo-BLG6G.ttf::FontFile::3084419246503377703::1732530911::1732531141::1::::<><>::
-HomeVideoBold-R90Dv.ttf::FontFile::6671361716086482060::1732530911::1732531141::1::::<><>::
+HomeVideo-BLG6G.ttf::FontFile::3084419246503377703::1732530911::1732736530::1::::<><>::
+HomeVideoBold-R90Dv.ttf::FontFile::6671361716086482060::1732530911::1732736531::1::::<><>::
 log_line_1.tres::LabelSettings::4341055116668786751::1732530911::0::1::::<><>::uid://05r318aa5em2::::res://assets/fonts/ui_font.ttf
 log_line_2.tres::LabelSettings::6127547969218070168::1732530911::0::1::::<><>::uid://05r318aa5em2::::res://assets/fonts/ui_font.ttf
 log_line_3.tres::LabelSettings::8413452698126212986::1732530911::0::1::::<><>::uid://05r318aa5em2::::res://assets/fonts/ui_font.ttf
 red_player_ui.tres::LabelSettings::8040067677641856751::1732530911::0::1::::<><>::uid://bj7d61dymsjdn::::res://assets/fonts/HomeVideo-BLG6G.ttf
-ui_font.ttf::FontFile::1817736031265803507::1732530911::1732531141::1::::<><>::
-::res://assets/geometry/::1732531149
-elevation.glb::PackedScene::8952030178587377089::1732530911::1732531149::1::::<><>::
+ui_font.ttf::FontFile::1817736031265803507::1732530911::1732736531::1::::<><>::
+::res://assets/geometry/::1732736531
+elevation.glb::PackedScene::8952030178587377089::1732530911::1732736531::1::::<><>::
 long_wall.tscn::PackedScene::4680964095431575238::1732530911::0::1::::<><>::
-pillars.glb::PackedScene::245594774533797047::1732530911::1732531146::1::::<><>::
+pillars.glb::PackedScene::245594774533797047::1732530911::1732736531::1::::<><>::
 pillars.tscn::PackedScene::5815556354728536697::1732530911::0::1::::<><>::
 ramp.tscn::PackedScene::9156307137620439124::1732530911::0::1::::<><>::
 short_wall.tscn::PackedScene::1850818952569419862::1732530911::0::1::::<><>::
 ::res://assets/pictures/::1732530911
-::res://assets/pictures/weapon icons/::1732531142
-assault_rifle_icon.png::CompressedTexture2D::8283617754704090093::1732530911::1732531142::1::::<><>::
-::res://assets/textures/::1732531146
-cursor.png::CompressedTexture2D::4233984166866385651::1732530911::1732531142::1::::<><>::
-dummy_texture.jpg::CompressedTexture2D::1909289202807680474::1732530911::1732531141::1::::<><>::
-floor.png::CompressedTexture2D::6115217547038108792::1732530911::1732531141::1::::<><>::
+::res://assets/pictures/weapon icons/::1732736531
+assault_rifle_icon.png::CompressedTexture2D::8283617754704090093::1732530911::1732736531::1::::<><>::
+::res://assets/textures/::1732736531
+cursor.png::CompressedTexture2D::4233984166866385651::1732530911::1732736531::1::::<><>::
+dummy_texture.jpg::CompressedTexture2D::1909289202807680474::1732530911::1732736531::1::::<><>::
+floor.png::CompressedTexture2D::6115217547038108792::1732530911::1732736531::1::::<><>::
 floor_uv.blend::PackedScene::6124362222877349850::1732530911::1732531146::0::::<><>::
 ::res://enemies/::1732530911
 ::res://enemies/basic_enemy/::1732530911
@@ -46,8 +46,9 @@ delta_timer.gd::GDScript::-1::1732530911::0::1::::DeltaTimer<>RefCounted<>::
 global_defs.gd::GDScript::-1::1732530911::0::1::::<>Node3D<>::
 killable.gd::GDScript::-1::1732530911::0::1::::Killable<>CharacterBody3D<>::
 ::res://levels/::1732530911
-::res://levels/test_level/::1732736323
-test_level.tscn::PackedScene::7717641703251261641::1732736323::0::1::::<><>::res://player/player_ui.gd<>uid://ctei0e6qkqbpw::::res://assets/textures/floor.png<>uid://co4dmmg70p010::::res://assets/geometry/pillars.tscn<>uid://7dfvuspo0x3r::::res://player/player.tscn<>uid://dgtkkjpxyghvf::::res://player/camera_3_pv.tscn
+::res://levels/test_level/::1732985854
+test_level.gd::GDScript::-1::1732912194::0::1::::<>Node3D<>::
+test_level.tscn::PackedScene::7717641703251261641::1732985854::0::1::::<><>::uid://ctei0e6qkqbpw::::res://assets/textures/floor.png<>res://levels/test_level/test_level.gd<>uid://co4dmmg70p010::::res://assets/geometry/pillars.tscn<>uid://7dfvuspo0x3r::::res://player/player.tscn<>uid://dgtkkjpxyghvf::::res://player/camera_3_pv.tscn
 ::res://misc_objects/::1732530911
 ::res://misc_objects/bullet/::1732530911
 active_bullet.tres::StandardMaterial3D::5863760071967553014::1732530911::0::1::::<><>::
@@ -63,24 +64,23 @@ heavy_bullet.tscn::PackedScene::2538121111733993141::1732530911::0::1::::<><>::r
 ::res://misc_objects/projectile/::1732530911
 generic_projectile.gd::GDScript::-1::1732530911::0::1::::Projectile<>CharacterBody3D<>::
 ::res://models/::1732530911
-::res://models/geometry/::1732531148
-baked_color.png::CompressedTexture2D::4382496325359031805::1732530911::1732531144::1::::<><>::
-baked_normals.png::CompressedTexture2D::2663430550593740099::1732530911::1732531142::1::::<><>::
+::res://models/geometry/::1732736533
+baked_color.png::CompressedTexture2D::4382496325359031805::1732530911::1732736533::1::::<><>::
+baked_normals.png::CompressedTexture2D::2663430550593740099::1732530911::1732736531::1::::<><>::
 elevation.blend::PackedScene::6489177727001395008::1732530911::1732531146::0::::<><>::
 heavy assault rifle.blend::PackedScene::4526595137288356879::1732530911::1732531147::0::::<><>::
 pillars.blend::PackedScene::1392375880050205425::1732530911::1732531148::0::::<><>::
 railgun v1.blend::PackedScene::8149685702504094564::1732530911::1732531148::0::::<><>::
-::res://models/weapons/::1732531149
-heavy assault rifle.glb::PackedScene::3444896380864556243::1732530911::1732531149::1::::<><>::
-railgun v1.glb::PackedScene::6522751887211099232::1732530911::1732531149::1::::<><>::
-::res://player/::1732736323
-camera_3_pv.gd::GDScript::-1::1732735977::0::1::::Camera3PV<>Node3D<>::
-camera_3_pv.tscn::PackedScene::7620243815060895803::1732736323::0::1::::<><>::res://player/camera_3_pv.gd
-player.gd::GDScript::-1::1732736303::0::1::::<>Killable<>::
-player.tscn::PackedScene::2252578295289783341::1732736323::0::1::::<><>::uid://b1k8dolm13n1l::::res://assets/textures/cursor.png<>res://player/player.gd<>uid://cx4tcmoy3cfo5::::res://player/weapons/Pistol.tscn<>uid://bhwitv71nor4g::::res://player/player_hud.tscn<>uid://5l7gk84ff7bb::::res://player/weapons/assault_rifle/assault_rifle.tscn<>uid://ctei0e6qkqbpw::::res://assets/textures/floor.png<>uid://byvb2lvonwfuk::::res://player/weapons/railgun/railgun_v_1.tscn
-player_hud.gd::GDScript::-1::1732530911::0::1::::<>Control<>::
-player_hud.tscn::PackedScene::2923679719398326180::1732736323::0::1::::<><>::res://player/player_hud.gd<>uid://bj7d61dymsjdn::::res://assets/fonts/HomeVideo-BLG6G.ttf<>uid://dmsw0foi21e0n::::res://assets/fonts/red_player_ui.tres
-player_ui.gd::GDScript::-1::1732736024::0::1::::PlayerUI<>Node3D<>::
+::res://models/weapons/::1732736531
+heavy assault rifle.glb::PackedScene::3444896380864556243::1732530911::1732736531::1::::<><>::
+railgun v1.glb::PackedScene::6522751887211099232::1732530911::1732736531::1::::<><>::
+::res://player/::1732985854
+camera_3_pv.gd::GDScript::-1::1732985854::0::1::::Camera3PV<>Node3D<>::
+camera_3_pv.tscn::PackedScene::7620243815060895803::1732985788::0::1::::<><>::res://player/camera_3_pv.gd
+player.gd::GDScript::-1::1732985075::0::1::::<>Killable<>::
+player.tscn::PackedScene::2252578295289783341::1732985788::0::1::::<><>::uid://b1k8dolm13n1l::::res://assets/textures/cursor.png<>res://player/player.gd<>uid://cx4tcmoy3cfo5::::res://player/weapons/Pistol.tscn<>uid://bhwitv71nor4g::::res://player/player_hud.tscn<>uid://5l7gk84ff7bb::::res://player/weapons/assault_rifle/assault_rifle.tscn<>uid://ctei0e6qkqbpw::::res://assets/textures/floor.png<>uid://byvb2lvonwfuk::::res://player/weapons/railgun/railgun_v_1.tscn
+player_hud.gd::GDScript::-1::1732736521::0::1::::<>Control<>::
+player_hud.tscn::PackedScene::2923679719398326180::1732985788::0::1::::<><>::res://player/player_hud.gd<>uid://bj7d61dymsjdn::::res://assets/fonts/HomeVideo-BLG6G.ttf<>uid://dmsw0foi21e0n::::res://assets/fonts/red_player_ui.tres
 ::res://player/weapons/::1732530911
 generic_weapon.gd::GDScript::-1::1732530911::0::1::::Weapon<>Node3D<>::
 Pistol.gd::GDScript::-1::1732530911::0::1::::<>Weapon<>::

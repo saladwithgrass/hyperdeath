@@ -120,8 +120,13 @@ one_shot = true
 [node name="dash_timer" type="Timer" parent="."]
 one_shot = true
 
+[node name="visibility_checker" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-1, 0, -1, 2, 2, 2)
+
 [connection signal="area_entered" from="rig/melee_hitbox" to="." method="_on_melee_hitbox_area_entered"]
 [connection signal="body_entered" from="rig/melee_hitbox" to="." method="_on_melee_hitbox_body_entered"]
 [connection signal="body_exited" from="rig/melee_hitbox" to="." method="_on_melee_hitbox_body_exited"]
 [connection signal="timeout" from="melee_timer" to="." method="_on_melee_timer_timeout"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="screen_entered" from="visibility_checker" to="." method="_on_visibility_checker_screen_entered"]
+[connection signal="screen_exited" from="visibility_checker" to="." method="_on_visibility_checker_screen_exited"]

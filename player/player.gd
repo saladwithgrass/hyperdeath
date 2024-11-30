@@ -57,6 +57,11 @@ var vitality_timer = -1
 @onready var weapons = [pistol, assault_rifle, railgun]
 var current_weapon = 0
 
+@export var camera:Camera3PV
+
+signal exited_screen()
+signal entered_screen()
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	health = Globals.player_health
@@ -75,17 +80,20 @@ func deal_damage(damage):
 	health_indicator.label_settings.font_color = Color.RED
 
 # visual updates
-func look_at_cursor():
+
+func move_cursor():
 	var player_pos = global_transform.origin
 	var drop_plane = Plane(Vector3(0, 1, 0), player_pos.y)
 	var ray_len = 1000
 	var mouse_pos = get_viewport().get_mouse_position()
-	var from = get_parent_node_3d().get_mouse_projection()
-	var to = from + get_parent_node_3d().get_mouse_projection() * ray_len
+	var from = camera.project_ray_origin(mouse_pos)
+	var to = from + camera.project_ray_normal(mouse_pos) * ray_len
 	var cursor_pos = drop_plane.intersects_ray(from, to)
 	if cursor_pos != null:
 		cursor.global_transform.origin = cursor_pos # + Vector3(0, 1, 0)
-		mouse_direction = cursor_pos
+
+func look_at_cursor():
+		mouse_direction = cursor.global_transform.origin
 		mouse_direction.y = 1
 		rig.look_at(mouse_direction, Vector3(0, 1, 0))
 		weapon.look_at(mouse_direction)
@@ -212,9 +220,12 @@ func process_inputs(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 func _physics_process(delta):
+	# process cursor position
+	move_cursor()
+	look_at_cursor()
 	update_indicators()
+	
 	# process dash timer
-
 	if (is_dashing):
 		move_and_slide()
 		return
@@ -224,9 +235,6 @@ func _physics_process(delta):
 		vitality_timer -= delta
 	else:
 		health_indicator.label_settings.font_color = Color.GREEN
-
-	# process cursor position
-	look_at_cursor()
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -286,3 +294,9 @@ func damage_log(who:String, damage:int):
 
 func kill_log(who:String):
 	ui.kill_log(who)
+
+func _on_visibility_checker_screen_entered() -> void:
+	entered_screen.emit()
+
+func _on_visibility_checker_screen_exited() -> void:
+	exited_screen.emit()

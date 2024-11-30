@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dh7qowtpwywm0"]
 
-[ext_resource type="Script" path="res://player/player_ui.gd" id="1_23vqe"]
 [ext_resource type="Texture2D" uid="uid://ctei0e6qkqbpw" path="res://assets/textures/floor.png" id="1_25mdf"]
+[ext_resource type="Script" path="res://levels/test_level/test_level.gd" id="1_eg7e4"]
 [ext_resource type="PackedScene" uid="uid://co4dmmg70p010" path="res://assets/geometry/pillars.tscn" id="2_pe62u"]
 [ext_resource type="PackedScene" uid="uid://7dfvuspo0x3r" path="res://player/player.tscn" id="2_womrx"]
 [ext_resource type="PackedScene" uid="uid://dgtkkjpxyghvf" path="res://player/camera_3_pv.tscn" id="3_med2i"]
@@ -25,17 +25,17 @@ size = Vector3(200, 1, 200)
 
 [node name="test_level" type="Node3D"]
 process_mode = 1
+script = ExtResource("1_eg7e4")
 
-[node name="player_rig" type="Node3D" parent="." node_paths=PackedStringArray("camera", "player")]
-script = ExtResource("1_23vqe")
-camera = NodePath("camera3pv")
-player = NodePath("player")
+[node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_womrx")]
+camera = NodePath("../camera3pv")
 
-[node name="player" parent="player_rig" instance=ExtResource("2_womrx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.437, 0, 0)
-
-[node name="camera3pv" parent="player_rig" instance=ExtResource("3_med2i")]
-transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -10, 6, 10)
+[node name="camera3pv" parent="." node_paths=PackedStringArray("follow") instance=ExtResource("3_med2i")]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -10, 11, 10)
+projection = 1
+current = true
+size = 33.0
+follow = NodePath("../player")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.99177, 0)
