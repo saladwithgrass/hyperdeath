@@ -30,6 +30,7 @@ font_color = Color(0, 1, 0, 1)
 
 [node name="Control" type="Control"]
 process_mode = 3
+modulate = Color(1, 1, 1, 0.207843)
 top_level = true
 layout_mode = 3
 anchors_preset = 15

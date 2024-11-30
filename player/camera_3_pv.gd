@@ -12,9 +12,12 @@ var velocity:Vector3 = Vector3.ZERO
 # rigidity of springs that pull camera
 @export var rigidity:float = 0.5
 
+# damping mechanism
+@export var spring_damp:float = 5
+
 # directions in world space that correspond to movement up_and_down
 @export var floor_level:float = 0
-var floor_plane:Plane = Plane(Vector3(0, 1, 0), floor_level)
+var floor_plane:Plane = Plane(Vector3.UP, floor_level)
 
 # these determine in which direction camera will move in 3d
 # when it has to move up or right in screen space 
@@ -31,20 +34,33 @@ func project_screen_to_plane(screen_pos: Vector2, plane: Plane = floor_plane) ->
 	return intersection
 
 func _ready() -> void:
+	
+	
 	# set up directions
 	
-	# set screen center in 3d plane
-	var center_3d_pos = project_screen_to_plane(Vector2(0, 0))
 	# get viewport size to get points on it
 	var viewport_size = get_viewport().size
 
+	# set screen center in 3d plane
+	var center_3d_pos = project_screen_to_plane(viewport_size/2)
 	# first get a vector from center to up center
 	var up_3d_pos = project_screen_to_plane(Vector2(viewport_size.x / 2, 0))
 	up_direction = (up_3d_pos - center_3d_pos).normalized()
 	
+	var marker_scene = load("res://misc_objects/quick_marker/quick_marker.tscn")
+	var marker = marker_scene.instantiate()
+	owner.add_child.call_deferred(marker)
+	marker.position = up_3d_pos
 	# then get a vector from center to right center
-	var right_3d_pos = project_screen_to_plane(Vector2(viewport_size.x, viewport_size.y/2))
+	var right_3d_pos = -project_screen_to_plane(Vector2(0, viewport_size.y/2))
 	right_direction = (right_3d_pos - center_3d_pos).normalized()
+	marker = marker_scene.instantiate()
+	owner.add_child.call_deferred(marker)
+	marker.position = right_3d_pos
+	
+	marker = marker_scene.instantiate()
+	owner.add_child.call_deferred(marker)
+	marker.position = center_3d_pos / 3 
 	# FIXME maybe a bug here since right_direction x and y must be same
 
 func get_follow_position_on_screen() -> Vector2i:
@@ -53,10 +69,16 @@ func get_follow_position_on_screen() -> Vector2i:
 func get_forces_on_screen() -> Vector2:
 	var viewport_size = get_viewport().size
 	var follow_pos = get_follow_position_on_screen()
-	return -rigidity * (viewport_size / 2 - follow_pos)
+	return rigidity * (viewport_size / 2 - follow_pos)
 
 func _process(delta: float) -> void:
+	# get forces in 2d
 	var forces = get_forces_on_screen()
-	velocity.x += forces.x * delta
-	velocity.y += forces.y * delta
-	position -= velocity * delta
+	
+	# convert forces to 3d
+	var forces_3d = Vector3.ZERO
+	forces_3d += forces.y * up_direction
+	# forces_3d += forces.x * right_direction
+	forces_3d -= velocity  * spring_damp
+	velocity += forces_3d * delta
+	position += velocity * delta
