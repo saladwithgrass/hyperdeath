@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://b1k8dolm13n1l" path="res://assets/textures/cursor.png" id="1_n1jjx"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_p2a6n"]
 [ext_resource type="PackedScene" uid="uid://cx4tcmoy3cfo5" path="res://player/weapons/Pistol.tscn" id="2_6m2sf"]
-[ext_resource type="PackedScene" uid="uid://bhwitv71nor4g" path="res://player/player_hud.tscn" id="2_t5gin"]
+[ext_resource type="PackedScene" uid="uid://bhwitv71nor4g" path="res://player/main_hud/player_hud.tscn" id="2_t5gin"]
 [ext_resource type="PackedScene" uid="uid://5l7gk84ff7bb" path="res://player/weapons/assault_rifle/assault_rifle.tscn" id="3_38xsd"]
 [ext_resource type="Texture2D" uid="uid://ctei0e6qkqbpw" path="res://assets/textures/floor.png" id="3_s7yut"]
 [ext_resource type="PackedScene" uid="uid://byvb2lvonwfuk" path="res://player/weapons/railgun/railgun_v_1.tscn" id="4_nsd2h"]
@@ -50,11 +50,12 @@ uv1_scale = Vector3(2, 2, 2)
 material = SubResource("StandardMaterial3D_4k7m7")
 size = Vector2(20, 20)
 
-[node name="player" type="CharacterBody3D" groups=["player_group"]]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("main_hud") groups=["player_group"]]
 collision_layer = 2
 collision_mask = 13
 safe_margin = 0.05
 script = ExtResource("1_p2a6n")
+main_hud = NodePath("ui/main_hud")
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -108,8 +109,6 @@ skeleton = NodePath("../..")
 [node name="cursor_floor" type="MeshInstance3D" parent="cursor"]
 mesh = SubResource("PlaneMesh_1ddfy")
 
-[node name="ui" parent="." instance=ExtResource("2_t5gin")]
-
 [node name="temp_floor" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("PlaneMesh_rl20y")
@@ -122,6 +121,10 @@ one_shot = true
 
 [node name="visibility_checker" type="VisibleOnScreenNotifier3D" parent="."]
 aabb = AABB(-1, 0, -1, 2, 2, 2)
+
+[node name="ui" type="CanvasLayer" parent="."]
+
+[node name="main_hud" parent="ui" instance=ExtResource("2_t5gin")]
 
 [connection signal="area_entered" from="rig/melee_hitbox" to="." method="_on_melee_hitbox_area_entered"]
 [connection signal="body_entered" from="rig/melee_hitbox" to="." method="_on_melee_hitbox_body_entered"]

@@ -1,7 +1,0 @@
-res://player/camera_3_pv.tscn
-res://levels/test_level/test_level.tscn
-res://player/player_hud.tscn
-res://player/player.tscn
-res://player/camera_3_pv.gd
-res://player/player.gd
-res://misc_objects/quick_marker/quick_marker.tscn

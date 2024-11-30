@@ -1,5 +1,5 @@
 extends Killable
-
+class_name Player
 # external scenes
 var bullet_scene = preload("res://misc_objects/bullet/bullet.tscn")
 var enemy_scene = preload("res://enemies/basic_enemy/basic_enemy.tscn")
@@ -43,12 +43,13 @@ var is_melee_on_cd:bool = false
 const melee_damage = Globals.player_melee_damage
 
 # UI elemets
-@onready var ui = $ui
-@onready var dash_indicator:Label = $ui/background/dash_status
-const dash_indicator_symbols_amount = 10
-@onready var health_indicator:Label = $ui/background/health_status
-const flash_after_damage = 0.15
-var vitality_timer = -1
+@export var main_hud:PlayerMainHud
+
+# @onready var dash_indicator:Label = $ui/background/dash_status
+
+# @onready var health_indicator:Label = $ui/background/health_status
+# const flash_after_damage = 0.15
+# var vitality_timer = -1
 
 @onready var col_mask = get_collision_mask()
 @onready var col_layer = get_collision_layer()
@@ -76,8 +77,7 @@ func deal_damage(damage):
 	health -= damage
 	if (health <= 0):
 		kill()
-	vitality_timer = flash_after_damage
-	health_indicator.label_settings.font_color = Color.RED
+	main_hud.update_vitality(health, max_health)
 
 # visual updates
 
@@ -99,24 +99,10 @@ func look_at_cursor():
 		weapon.look_at(mouse_direction)
 
 func update_indicators():
-	# update health
-	var health_text = str(health) + "/" + str(max_health)
-	health_indicator.text = health_text
 	# update dash
-	if (is_dash_on_cd):
-		dash_indicator.label_settings.font_color = Color.RED
+	if is_dash_on_cd:
 		var dash_percentage = (dash_cd - dash_timer.time_left) / dash_cd
-		var dash_text = "["
-		var filled_symbols = int(dash_percentage * dash_indicator_symbols_amount)
-		for i in filled_symbols:
-			dash_text += "#"
-		for i in dash_indicator_symbols_amount - filled_symbols:
-			dash_text += "."
-		dash_text += "]"
-		dash_indicator.text = dash_text
-	else:
-		dash_indicator.label_settings.font_color = Color.GREEN
-		dash_indicator.text = "ready"
+		main_hud.update_dash_indicator(dash_percentage)
 
 # player actions
 func shoot():
@@ -164,7 +150,6 @@ func process_spawns():
 		spawn_enemy("melee_enemy")
 	if Input.is_action_just_pressed("L"):
 		spawn_enemy("dummy")
-	
 
 func process_inputs(delta):
 	if Input.is_action_just_pressed("scroll_up"):
@@ -230,12 +215,6 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 	
-	# process flashing color on vitality
-	if (vitality_timer > 0):
-		vitality_timer -= delta
-	else:
-		health_indicator.label_settings.font_color = Color.GREEN
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -249,7 +228,7 @@ func _on_melee_hitbox_body_entered(body):
 		body.is_being_parried = true
 		return
 	if body is Projectile:
-		ui.screen_flash_start()
+		main_hud.screen_flash_start()
 		body.on_parry(cursor.position)
 		return
 		var new_velocity = cursor.position.normalized() * 100
@@ -282,18 +261,20 @@ func _on_dash_timer_timeout():
 		return
 	if is_dash_on_cd:
 		is_dash_on_cd = false
+	
+	main_hud.update_dash_indicator(1)
 
 func _on_melee_hitbox_area_entered(area):
 	if area.is_in_group("parriable_melee"):
 		if area.owner != null and area.owner is Killable:
-			ui.screen_flash_start()
+			main_hud.screen_flash_start()
 			area.owner.deal_damage(melee_damage*2)
 
 func damage_log(who:String, damage:int):
-	ui.damage_log(who, damage)
+	main_hud.damage_log(who, damage)
 
 func kill_log(who:String):
-	ui.kill_log(who)
+	main_hud.kill_log(who)
 
 func _on_visibility_checker_screen_entered() -> void:
 	entered_screen.emit()
