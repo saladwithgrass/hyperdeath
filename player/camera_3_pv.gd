@@ -67,7 +67,7 @@ func _process(delta: float) -> void:
 	
 	# convert forces to 3d
 	var forces_3d = Vector3.ZERO
-	# forces_3d += forces.y * up_direction
+	forces_3d += forces.y * up_direction
 	forces_3d += forces.x * right_direction
 	forces_3d -= velocity  * spring_damp
 	velocity += forces_3d * delta
