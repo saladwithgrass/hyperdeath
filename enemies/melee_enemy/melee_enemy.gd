@@ -61,7 +61,7 @@ func _physics_process(delta):
 	health_display.look_at_screen()
 	# check if it has to move to the player
 	# 0.9 is there just to account for some errors
-	
+
 	if ($rig/melee_hitbox/melee_marker.global_position - target.position).length() <= melee_reach * 1.2:
 		velocity = Vector3.ZERO
 		melee()
