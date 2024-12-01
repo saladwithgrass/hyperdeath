@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c4d4k17ro3x6"]
+[gd_scene load_steps=8 format=3 uid="uid://c4d4k17ro3x6"]
 
 [ext_resource type="Script" path="res://enemies/machine_gunner_enemy/machine_gunner_enemy.gd" id="1_u1emb"]
+[ext_resource type="PackedScene" uid="uid://bcfqqpmwpgspp" path="res://misc_objects/heavy bullet/heavy_bullet.tscn" id="2_xkbdt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kyjcw"]
 
@@ -19,6 +20,9 @@ size = Vector3(0.7, 0.1, 0.4)
 
 [node name="machine_gunner_enemy" type="CharacterBody3D"]
 script = ExtResource("1_u1emb")
+can_shoot = null
+can_melee = null
+projectile_template = ExtResource("2_xkbdt")
 
 [node name="hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -2,7 +2,8 @@ extends Killable
 class_name Player
 # external scenes
 var bullet_scene = preload("res://misc_objects/bullet/bullet.tscn")
-var enemy_scene = preload("res://enemies/basic_enemy/basic_enemy.tscn")
+# var enemy_scene = preload("res://enemies/basic_enemy/basic_enemy.tscn")
+var enemy_scene = preload("res://enemies/basic_enemy_v2/basic_enemy_v2.tscn")
 var melee_enemy_scene = preload("res://enemies/melee_enemy/melee_enemy.tscn")
 var dummy_scene = preload("res://enemies/dummy/dummy.tscn")
 # child nodes
@@ -17,8 +18,7 @@ var dummy_scene = preload("res://enemies/dummy/dummy.tscn")
 @onready var railgun:Weapon = $"rig/gun_muzzle/railgun v1"
 @onready var weapon = pistol
 
-# health value
-const max_health = Globals.player_health
+
 
 # movement values
 const SPEED = Globals.player_speed
@@ -64,6 +64,8 @@ signal exited_screen()
 signal entered_screen()
 
 func _ready():
+	# max health value
+	max_health = Globals.player_health
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	health = Globals.player_health
 	$temp_floor.visible = false
@@ -150,7 +152,6 @@ func process_spawns():
 		spawn_enemy("melee_enemy")
 	if Input.is_action_just_pressed("L"):
 		spawn_enemy("dummy")
-
 func process_inputs(delta):
 	if Input.is_action_just_pressed("scroll_up"):
 		weapon.visible = false
@@ -182,8 +183,7 @@ func process_inputs(delta):
 		$rig/melee_hitbox/melee_col.disabled = true
 	if Input.is_action_just_pressed("ESC"):
 		get_tree().quit(0)
-	# if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-	# 	velocity.y = JUMP_VELOCITY
+
 	process_spawns()
 	if Input.is_action_just_pressed("LMB"):
 		shoot()

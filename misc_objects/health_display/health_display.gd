@@ -9,3 +9,6 @@ func update_display(cur_health):
 
 func look_at_screen():
 	look_at(get_viewport().get_camera_3d().position)
+
+func _process(delta: float) -> void:
+	look_at_screen()

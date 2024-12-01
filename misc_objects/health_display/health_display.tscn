@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvcf843n4wy3r"]
 
-[ext_resource type="FontFile" uid="uid://05r318aa5em2" path="res://assets/fonts/ui_font.ttf" id="1_dcsyx"]
 [ext_resource type="Script" path="res://misc_objects/health_display/health_display.gd" id="1_py4va"]
+[ext_resource type="FontFile" uid="uid://bj7d61dymsjdn" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="2_ux4mk"]
 
 [node name="health_display" type="Marker3D"]
 transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 0, 0, 0)
@@ -9,8 +9,9 @@ script = ExtResource("1_py4va")
 
 [node name="health" type="Label3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.51557, 0)
-pixel_size = 0.019
 modulate = Color(1, 0, 0, 1)
+outline_modulate = Color(0, 0, 0, 0)
 text = "10/10
 "
-font = ExtResource("1_dcsyx")
+font = ExtResource("2_ux4mk")
+font_size = 128

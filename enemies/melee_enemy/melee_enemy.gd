@@ -6,7 +6,6 @@ extends Killable
 # just runs and fucks shit up
 
 @onready var health_display = $health_display
-const max_health = 5
 
 const melee_cd = 0.8 # s
 var is_melee_on_cd:bool = false
@@ -30,6 +29,7 @@ func deal_damage(damage):
 	health_display.update_display(health)
 
 func _ready():
+	max_health = 5
 	health = max_health
 	health_display.max_health = max_health
 	nav_agent.path_desired_distance = 0.5
@@ -58,7 +58,6 @@ func melee():
 	$melee_timer.start(melee_windup)
 
 func _physics_process(delta):
-	health_display.look_at_screen()
 	# check if it has to move to the player
 	# 0.9 is there just to account for some errors
 
@@ -68,7 +67,8 @@ func _physics_process(delta):
 	else:
 		update_target_location()
 		get_next_location()
-	$rig.look_at(target.position)
+		
+	$rig.look_at(target.position + Vector3(0, 0.25, 0))
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	move_and_slide()

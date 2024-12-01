@@ -12,7 +12,6 @@ var target:Killable
 const shot_cd = 1
 var shot_cd_timer = 0
 
-const max_health = 3
 
 # movement setup
 var last_target_position:Vector3
@@ -48,6 +47,7 @@ func get_next_location():
 	velocity = new_velocity
 
 func _ready():
+	max_health = 3
 	health = max_health
 	health_display.max_health = max_health
 	health_display.update_display(health)
@@ -76,22 +76,15 @@ func shoot():
 
 func _physics_process(delta):
 	shot_cd_timer -= delta
-	health_display.look_at_screen()
 	if is_target_visible():
-		# print("target is visible")
 		velocity = Vector3.ZERO
 		last_target_position = target.position
 		if shot_cd_timer <= 0:
-			# print("shooting")
 			shoot()
 			shot_cd_timer = shot_cd
 	else:
-		# print("target is invisible")
-		# print("moving")
-		# print("target position: ", last_target_position)
 		update_target_location(last_target_position)
 		get_next_location()
-	# print("")
 	var to_look_at = last_target_position
 	to_look_at.y = 1
 	rig.look_at(to_look_at)

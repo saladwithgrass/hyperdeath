@@ -6,14 +6,15 @@ class_name GenericEnemy
 @export var target:Killable
 
 # variables that determine attack capabilities
+@export_group("Attack Details")
 @export var can_shoot:bool = true
 @export var can_melee:bool = false
 
 # projectile variable that is spawned when shooting
-@export var projectile_template:Projectile
+@export var projectile_template:PackedScene
+@export var gun_muzzle:Marker3D
 
 # basic parameters
-const max_health = 5
 var speed = 5
 
 # sets target to track and attack
@@ -32,9 +33,15 @@ func set_next_velocity():
 	var new_velocity = (next_location - current_location).normalized() * speed
 	velocity = new_velocity
 
-# spawn a new projectile and send it
+# spawn a new projectile and send itt
 func shoot():
-	pass
+	assert(can_shoot)
+	var bullet = projectile_template.instantiate()
+	var bullet_direction = target.position - gun_muzzle.global_position
+	bullet_direction.y = 0
+	bullet.position = gun_muzzle.global_position
+	owner.add_child(bullet)
+	bullet.set_new_direction(bullet_direction)
 
 # do a melee
 # FIXME is not done yet
@@ -45,5 +52,10 @@ func melee():
 func _ready():
 	health = max_health
 
-func process():
-	pass
+func _process(delta: float) -> void:
+	$rig.look_at(target.position)
+
+
+func _on_attack_timer_timeout() -> void:
+	print('shooting')
+	shoot()
