@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4d4k17ro3x6"]
+[gd_scene load_steps=8 format=3 uid="uid://do1gadsytqdv7"]
 
-[ext_resource type="Script" path="res://enemies/machine_gunner_enemy/machine_gunner_enemy.gd" id="1_u1emb"]
-[ext_resource type="PackedScene" uid="uid://bcfqqpmwpgspp" path="res://misc_objects/heavy bullet/heavy_bullet.tscn" id="2_xkbdt"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kyjcw"]
+[ext_resource type="PackedScene" uid="uid://cn4c0rsf8b0wi" path="res://enemies/generic_enemy/generic_enemy.tscn" id="1_yhdou"]
+[ext_resource type="Script" path="res://enemies/machine_gunner_enemy/machine_gunner_enemy.gd" id="2_mjkcd"]
+[ext_resource type="PackedScene" uid="uid://bcfqqpmwpgspp" path="res://misc_objects/heavy bullet/heavy_bullet.tscn" id="3_giw0b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gch6k"]
 albedo_color = Color(0.0230001, 0, 0.46, 1)
@@ -18,27 +17,24 @@ albedo_color = Color(1, 0, 0, 1)
 material = SubResource("StandardMaterial3D_7elfn")
 size = Vector3(0.7, 0.1, 0.4)
 
-[node name="machine_gunner_enemy" type="CharacterBody3D"]
-script = ExtResource("1_u1emb")
-can_shoot = null
-can_melee = null
-projectile_template = ExtResource("2_xkbdt")
+[node name="machine_gunner_enemy" instance=ExtResource("1_yhdou")]
+script = ExtResource("2_mjkcd")
+projectile_template = ExtResource("3_giw0b")
 
-[node name="hitbox" type="CollisionShape3D" parent="."]
+[node name="skin" type="MeshInstance3D" parent="rig" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CapsuleShape3D_kyjcw")
-
-[node name="rig" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-
-[node name="skin" type="MeshInstance3D" parent="rig"]
 mesh = SubResource("CapsuleMesh_dudke")
 skeleton = NodePath("../..")
 
-[node name="eyes" type="MeshInstance3D" parent="rig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.59511, -0.344703)
+[node name="eyes" type="MeshInstance3D" parent="rig" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59511, -0.344703)
 mesh = SubResource("BoxMesh_h7dwl")
+skeleton = NodePath("")
 
-[node name="eyes2" type="MeshInstance3D" parent="rig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.410953, -0.344703)
+[node name="eyes2" type="MeshInstance3D" parent="rig" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41095, -0.344703)
 mesh = SubResource("BoxMesh_h7dwl")
+skeleton = NodePath("")
+
+[node name="attack_timer" parent="." index="3"]
+wait_time = 0.1

@@ -2,10 +2,14 @@ extends Killable
 class_name Player
 # external scenes
 var bullet_scene = preload("res://misc_objects/bullet/bullet.tscn")
-# var enemy_scene = preload("res://enemies/basic_enemy/basic_enemy.tscn")
+
 var enemy_scene = preload("res://enemies/basic_enemy_v2/basic_enemy_v2.tscn")
 var melee_enemy_scene = preload("res://enemies/melee_enemy/melee_enemy.tscn")
 var dummy_scene = preload("res://enemies/dummy/dummy.tscn")
+var machine_gunner_scene = preload("res://enemies/machine_gunner_enemy/machine_gunner_enemy.tscn")
+
+var spawn_scenes = [dummy_scene, enemy_scene, melee_enemy_scene, machine_gunner_scene]
+
 # child nodes
 @onready var cursor = $cursor
 @onready var rig = $rig
@@ -129,16 +133,8 @@ func melee():
 	is_meleeing = true
 	melee_timer.start(melee_duration)
 
-func spawn_enemy(enemy_class:String):
-	var enemy:Killable
-	if (enemy_class == "basic_enemy"):
-		enemy = enemy_scene.instantiate()
-		enemy.position = self.position + cursor.position
-	elif enemy_class == "melee_enemy":
-		enemy = melee_enemy_scene.instantiate()
-		enemy.position = self.position + cursor.position
-	elif enemy_class == "dummy":
-		enemy = dummy_scene.instantiate()
+func spawn_enemy(scene:PackedScene):
+	var enemy:Killable = scene.instantiate()
 	enemy.position = self.position + cursor.position
 	enemy.set_target(self)
 	owner.add_child(enemy)
@@ -146,12 +142,19 @@ func spawn_enemy(enemy_class:String):
 # process by tick
 
 func process_spawns():
-	if Input.is_action_just_pressed("B"):
-		spawn_enemy("basic_enemy")
-	if Input.is_action_just_pressed("M"):
-		spawn_enemy("melee_enemy")
-	if Input.is_action_just_pressed("L"):
-		spawn_enemy("dummy")
+	if Input.is_action_just_pressed("spawn_0"):
+		spawn_enemy(spawn_scenes[0])
+	if Input.is_action_just_pressed("spawn_1"):
+		spawn_enemy(spawn_scenes[1])
+	if Input.is_action_just_pressed("spawn_2"):
+		spawn_enemy(spawn_scenes[2])
+	if Input.is_action_just_pressed("spawn_3"):
+		spawn_enemy(spawn_scenes[3])
+	if Input.is_action_just_pressed("spawn_4"):
+		spawn_enemy(spawn_scenes[4])
+	if Input.is_action_just_pressed("spawn_5"):
+		spawn_enemy(spawn_scenes[5])
+
 func process_inputs(delta):
 	if Input.is_action_just_pressed("scroll_up"):
 		weapon.visible = false
