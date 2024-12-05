@@ -5,10 +5,14 @@ class_name Killable
 var health:int
 var is_being_parried:bool = false
 
+func _ready():
+	pass
+
 func set_target(new_target):
 	pass
 
 func deal_damage(damage:int):
+	
 	health -= damage
 	if (health <= 0):
 		kill()

@@ -19,7 +19,11 @@ size = Vector3(0.7, 0.1, 0.4)
 
 [node name="machine_gunner_enemy" instance=ExtResource("1_yhdou")]
 script = ExtResource("2_mjkcd")
+mag_size = 30
+reload_time = 3.0
+fire_rate = 15.0
 projectile_template = ExtResource("3_giw0b")
+max_health = 10.0
 
 [node name="skin" type="MeshInstance3D" parent="rig" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -38,3 +42,8 @@ skeleton = NodePath("")
 
 [node name="attack_timer" parent="." index="3"]
 wait_time = 0.1
+
+[node name="reload_timer" type="Timer" parent="." index="4"]
+one_shot = true
+
+[connection signal="timeout" from="reload_timer" to="." method="_on_reload_timer_timeout"]

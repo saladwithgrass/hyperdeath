@@ -50,6 +50,7 @@ func melee():
 
 # refill health
 func _ready():
+	super._ready()
 	health = max_health
 
 func _process(delta: float) -> void:
@@ -57,5 +58,5 @@ func _process(delta: float) -> void:
 
 
 func _on_attack_timer_timeout() -> void:
-	print('shooting')
+	# print('shooting')
 	shoot()

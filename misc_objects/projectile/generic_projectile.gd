@@ -19,7 +19,9 @@ func _physics_process(delta):
 		queue_free()
 	lifetime -= delta
 	var collision := move_and_collide(velocity*delta)
+	# print(delta, collision)
 	if collision != null:
+		# print(collision)
 		if collision.get_collider() is Killable:
 			collision.get_collider().deal_damage(damage)
 		queue_free()

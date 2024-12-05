@@ -6,6 +6,8 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cb5rn"]
 
 [node name="generic_enemy" type="CharacterBody3D" node_paths=PackedStringArray("gun_muzzle")]
+collision_layer = 4
+collision_mask = 9
 script = ExtResource("1_8ywa3")
 projectile_template = ExtResource("2_ll3q7")
 gun_muzzle = NodePath("rig/gun_muzzle")
