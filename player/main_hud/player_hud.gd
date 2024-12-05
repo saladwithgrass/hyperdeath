@@ -25,14 +25,6 @@ const dash_indicator_symbols_amount = 10
 
 @onready var health_indicator = $background/health_status
 
-func damage_log(who:String, damage:int):
-	var new_line = who + " was damaged for " + str(damage)
-	update_log(new_line)
-
-func kill_log(who:String):
-	var new_line = who + " was killed"
-	update_log(new_line)
-
 func update_log(new_line:String):
 	log_lines[2].text = log_lines[1].text
 	log_lines[2].label_settings.font_color.a8 = log_lines[1].label_settings.font_color.a8
@@ -87,3 +79,6 @@ func _on_log_line_timer_3_timeout():
 
 func _on_vitality_timer_timeout() -> void:
 	health_indicator.label_settings.font_color = Color.GREEN
+
+func _on_logger_player_log(msg: String) -> void:
+	update_log(msg)

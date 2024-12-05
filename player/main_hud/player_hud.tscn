@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bhwitv71nor4g"]
+[gd_scene load_steps=12 format=3 uid="uid://bhwitv71nor4g"]
 
 [ext_resource type="Script" path="res://player/main_hud/player_hud.gd" id="1_g548d"]
 [ext_resource type="FontFile" uid="uid://bj7d61dymsjdn" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="2_yva1j"]
 [ext_resource type="LabelSettings" uid="uid://dmsw0foi21e0n" path="res://assets/fonts/red_player_ui.tres" id="3_ykr26"]
+[ext_resource type="PackedScene" uid="uid://dx8nblqhvnwau" path="res://global_stuff/logger.tscn" id="4_7yr5u"]
 
 [sub_resource type="Theme" id="Theme_mjrm6"]
 default_font = ExtResource("2_yva1j")
@@ -25,7 +26,7 @@ font_color = Color(0, 1, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_810bs"]
 font_color = Color(0, 1, 0, 1)
 
-[node name="Control" type="Control"]
+[node name="player_hud" type="Control"]
 process_mode = 3
 top_level = true
 layout_mode = 3
@@ -157,8 +158,11 @@ one_shot = true
 wait_time = 0.15
 one_shot = true
 
+[node name="logger" parent="." groups=["Logger"] instance=ExtResource("4_7yr5u")]
+
 [connection signal="timeout" from="flash_timer" to="." method="_on_flash_timer_timeout"]
 [connection signal="timeout" from="log_line_timer1" to="." method="_on_log_line_timer_1_timeout"]
 [connection signal="timeout" from="log_line_timer2" to="." method="_on_log_line_timer_2_timeout"]
 [connection signal="timeout" from="log_line_timer3" to="." method="_on_log_line_timer_3_timeout"]
 [connection signal="timeout" from="vitality_timer" to="." method="_on_vitality_timer_timeout"]
+[connection signal="player_log" from="logger" to="." method="_on_logger_player_log"]

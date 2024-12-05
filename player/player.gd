@@ -273,12 +273,6 @@ func _on_melee_hitbox_area_entered(area):
 			main_hud.screen_flash_start()
 			area.owner.deal_damage(melee_damage*2)
 
-func damage_log(who:String, damage:int):
-	main_hud.damage_log(who, damage)
-
-func kill_log(who:String):
-	main_hud.kill_log(who)
-
 func _on_visibility_checker_screen_entered() -> void:
 	entered_screen.emit()
 

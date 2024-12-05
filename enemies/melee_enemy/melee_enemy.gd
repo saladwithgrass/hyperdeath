@@ -1,11 +1,9 @@
 extends Killable
-
+class_name MeleeEnemy
 # this one is faster than player
 # always knows where the player is
 @onready var nav_agent = $navigation_agent
 # just runs and fucks shit up
-
-@onready var health_display = $health_display
 
 const melee_cd = 0.8 # s
 var is_melee_on_cd:bool = false
@@ -17,21 +15,15 @@ var is_melee_on_windup = false
 var melee_damage = 3
 const melee_reach = 1.4 # m
 
-const speed = 10
+const speed = 14
 var target
 
 const gravity = Globals.g
 
-func deal_damage(damage):
-	health -= damage
-	if (health <= 0):
-		kill()
-	health_display.update_display(health)
-
 func _ready():
+	super._ready()
 	max_health = 5
 	health = max_health
-	health_display.max_health = max_health
 	nav_agent.path_desired_distance = 0.5
 	nav_agent.target_desired_distance = melee_reach
 	$rig/melee_hitbox/melee_col.scale = Vector3(melee_reach, 1, 1)

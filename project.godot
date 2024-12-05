@@ -23,6 +23,11 @@ Globals="*res://global_stuff/global_defs.gd"
 
 project/assembly_name="Hyperdeath"
 
+[global_group]
+
+LevelScenes="A group that contains one node that is responsible for the level"
+Logger="Group for logging in-game actions"
+
 [input]
 
 forward={
@@ -123,6 +128,11 @@ spawn_5={
 spawn_0={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194438,"key_label":0,"unicode":48,"location":0,"echo":false,"script":null)
+]
+}
+toggle_fullscreen={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194336,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 

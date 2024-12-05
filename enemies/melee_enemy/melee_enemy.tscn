@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://4s1bmn1wis06"]
+[gd_scene load_steps=8 format=3 uid="uid://4s1bmn1wis06"]
 
 [ext_resource type="Script" path="res://enemies/melee_enemy/melee_enemy.gd" id="1_ss501"]
-[ext_resource type="PackedScene" uid="uid://cvcf843n4wy3r" path="res://misc_objects/health_display/health_display.tscn" id="2_max82"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rige0"]
 
@@ -56,9 +55,6 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.631008)
 
 [node name="navigation_agent" type="NavigationAgent3D" parent="."]
-
-[node name="health_display" parent="." instance=ExtResource("2_max82")]
-transform = Transform3D(-1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, -1, 0, 1.0151, 0)
 
 [node name="melee_timer" type="Timer" parent="."]
 one_shot = true
