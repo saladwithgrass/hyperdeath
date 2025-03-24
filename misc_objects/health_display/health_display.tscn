@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cvcf843n4wy3r"]
 
-[ext_resource type="Script" path="res://misc_objects/health_display/health_display.gd" id="1_py4va"]
+[ext_resource type="Script" uid="uid://r0gyj6s5xdbg" path="res://misc_objects/health_display/health_display.gd" id="1_py4va"]
 [ext_resource type="FontFile" uid="uid://bj7d61dymsjdn" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="2_ux4mk"]
 
 [node name="health_display" type="Marker3D"]

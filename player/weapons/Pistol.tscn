@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cx4tcmoy3cfo5"]
 
-[ext_resource type="Script" path="res://player/weapons/Pistol.gd" id="1_3hoq2"]
+[ext_resource type="Script" uid="uid://bidmf3uejhqmy" path="res://player/weapons/Pistol.gd" id="1_3hoq2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0i4rs"]
 albedo_color = Color(0.136826, 0.136826, 0.136826, 1)

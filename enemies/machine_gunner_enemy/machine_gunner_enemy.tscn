@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://do1gadsytqdv7"]
 
 [ext_resource type="PackedScene" uid="uid://cn4c0rsf8b0wi" path="res://enemies/generic_enemy/generic_enemy.tscn" id="1_yhdou"]
-[ext_resource type="Script" path="res://enemies/machine_gunner_enemy/machine_gunner_enemy.gd" id="2_mjkcd"]
+[ext_resource type="Script" uid="uid://cattyau8y0pph" path="res://enemies/machine_gunner_enemy/machine_gunner_enemy.gd" id="2_mjkcd"]
 [ext_resource type="PackedScene" uid="uid://bcfqqpmwpgspp" path="res://misc_objects/heavy bullet/heavy_bullet.tscn" id="3_giw0b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gch6k"]

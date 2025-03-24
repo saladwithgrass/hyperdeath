@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://cn4c0rsf8b0wi"]
 
-[ext_resource type="Script" path="res://enemies/generic_enemy/generic_enemy.gd" id="1_8ywa3"]
+[ext_resource type="Script" uid="uid://e4kytsgbb8yj" path="res://enemies/generic_enemy/generic_enemy.gd" id="1_8ywa3"]
 [ext_resource type="PackedScene" uid="uid://7f7a75jye8wi" path="res://misc_objects/bullet/bullet.tscn" id="2_ll3q7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cb5rn"]
 
 [node name="generic_enemy" type="CharacterBody3D" node_paths=PackedStringArray("gun_muzzle")]
 collision_layer = 4
-collision_mask = 9
+collision_mask = 13
 script = ExtResource("1_8ywa3")
 projectile_template = ExtResource("2_ll3q7")
 gun_muzzle = NodePath("rig/gun_muzzle")
@@ -22,8 +22,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_cb5rn")
 
 [node name="navigation_agent" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+radius = 6.0
 
 [node name="attack_timer" type="Timer" parent="."]
 autostart = true
+
+[node name="eyes" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4962, -0.582082)
 
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

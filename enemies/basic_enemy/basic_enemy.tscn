@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://ckdsprtl103sa"]
 
-[ext_resource type="Script" path="res://enemies/basic_enemy/basic_enemy.gd" id="1_lmakk"]
+[ext_resource type="Script" uid="uid://dlwl570d4vp0p" path="res://enemies/basic_enemy/basic_enemy.gd" id="1_lmakk"]
 [ext_resource type="PackedScene" uid="uid://cvcf843n4wy3r" path="res://misc_objects/health_display/health_display.tscn" id="2_oeks0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8oy3f"]
@@ -33,11 +33,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_oixk8")
 skeleton = NodePath("../..")
 
-[node name="eyes" type="MeshInstance3D" parent="rig"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.009, 0.508, -0.423231)
-mesh = SubResource("BoxMesh_3xuxt")
-skeleton = NodePath("../..")
-
 [node name="LOS_marker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
@@ -45,6 +40,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 transform = Transform3D(1, 0, 0, 0, 0.000575976, -1, 0, 1, 0.000575976, 0, 0.511462, -1.02051)
 target_position = Vector3(0, -20, 0)
 collision_mask = 7
+
+[node name="eyes" type="MeshInstance3D" parent="LOS_marker"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.009, 0.508, -0.423231)
+mesh = SubResource("BoxMesh_3xuxt")
+skeleton = NodePath("../..")
 
 [node name="gun_muzzle_rig" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

@@ -150,9 +150,9 @@ func process_spawns():
 		spawn_enemy(spawn_scenes[2])
 	if Input.is_action_just_pressed("spawn_3"):
 		spawn_enemy(spawn_scenes[3])
-	if Input.is_action_just_pressed("spawn_4"):
+	if Input.is_action_just_pressed("spawn_4") and len(spawn_scenes) > 4:
 		spawn_enemy(spawn_scenes[4])
-	if Input.is_action_just_pressed("spawn_5"):
+	if Input.is_action_just_pressed("spawn_5") and len(spawn_scenes) > 5:
 		spawn_enemy(spawn_scenes[5])
 
 func process_inputs(delta):
