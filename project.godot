@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Hyperdeath"
-run/main_scene="uid://dcpoe3hb2orlu"
+run/main_scene="uid://csdg8jk2etate"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

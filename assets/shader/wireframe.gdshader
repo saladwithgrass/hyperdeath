@@ -33,12 +33,11 @@ void fragment() {
 		dBaryCoord * width,
 		baryCoord
 	);
-	
+
 	remap = filtered ? remap : step(.5, remap);
 
 	float closestEdge = min(min(remap.x, remap.y), remap.z);
 
 	ALBEDO = mix(wireframeColor, modelColor, closestEdge).xyz;
 	ALPHA = mix(1., modelOpacity, closestEdge);
-	DEPTH = 1.0;
 }

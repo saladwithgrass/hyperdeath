@@ -12,7 +12,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5jh1l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hg6s5"]
-render_priority = 127
+render_priority = 0
 shader = ExtResource("2_rgyib")
 shader_parameter/modelColor = Color(0, 0, 0, 1)
 shader_parameter/wireframeColor = Color(0, 1, 0, 1)

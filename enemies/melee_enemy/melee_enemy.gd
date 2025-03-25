@@ -1,8 +1,7 @@
-extends Killable
+extends GenericEnemy
 class_name MeleeEnemy
 # this one is faster than player
 # always knows where the player is
-@onready var nav_agent = $navigation_agent
 # just runs and fucks shit up
 
 const melee_cd = 0.8 # s
@@ -15,13 +14,11 @@ var is_melee_on_windup = false
 var melee_damage = 3
 const melee_reach = 1.4 # m
 
-const speed = 14
-var target
-
 const gravity = Globals.g
 
 func _ready():
 	super._ready()
+	speed = 14
 	max_health = 5
 	health = max_health
 	nav_agent.path_desired_distance = 0.5
@@ -64,6 +61,9 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	move_and_slide()
+
+func _process(delta: float) -> void:
+	pass
 
 func _on_melee_timer_timeout():
 	if is_melee_on_windup:

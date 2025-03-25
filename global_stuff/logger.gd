@@ -18,9 +18,9 @@ func new_entry(msg:String):
 	entries.append(msg)
 	print('logged ', msg)
 
-func new_kill_message(who:String):
-	who = who.replace('_', ' ')
-	var msg = kill_msg_template % who
+func new_kill_message(_who:Node3D, killed_name:String):
+	killed_name = killed_name.replace('_', ' ')
+	var msg = kill_msg_template % killed_name
 	player_log.emit(msg)
 	new_entry(msg)
 	

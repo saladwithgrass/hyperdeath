@@ -114,11 +114,19 @@ func update_indicators():
 func shoot():
 	weapon.shoot()
 
+var prev_collision_layer
+var prev_collision_mask
 func dash():
 	if is_dash_on_cd:
 		return
-	set_collision_mask(16)
-	set_collision_layer(16)
+	prev_collision_layer = collision_layer
+	prev_collision_mask = collision_mask
+	set_collision_mask(0)
+	set_collision_layer(0)
+	set_collision_mask_value(5, true)
+	set_collision_layer_value(5, true)
+	set_collision_mask_value(1, true)
+	print(collision_mask)
 	is_dashing = true
 	velocity = velocity.normalized() * dash_velocity
 	if (velocity == Vector3.ZERO):
@@ -138,7 +146,7 @@ func spawn_enemy(scene:PackedScene):
 	enemy.position = self.position + cursor.position
 	enemy.set_target(self)
 	owner.add_child(enemy)
-	enemy.owner = owner
+	enemy.set_owner(owner)
 # process by tick
 
 func process_spawns():
@@ -259,8 +267,8 @@ func _on_dash_timer_timeout():
 		is_dashing = false
 		is_dash_on_cd = true
 		dash_timer.start(dash_cd)
-		set_collision_layer(col_layer)
-		set_collision_mask(col_mask)
+		set_collision_layer(prev_collision_layer)
+		set_collision_mask(prev_collision_mask)
 		return
 	if is_dash_on_cd:
 		is_dash_on_cd = false

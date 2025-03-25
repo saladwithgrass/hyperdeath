@@ -6,14 +6,14 @@ var health:int
 var is_being_parried:bool = false
 
 signal taken_damage(name:String, damage:int)
-signal was_killed(name:String)
+signal was_killed(who:Killable, name:String)
 
 func _ready():
 	var logger:EventLogger = get_tree().get_first_node_in_group('Logger')
 	connect('taken_damage', logger.new_damage_message)
 	connect('was_killed', logger.new_kill_message)
 
-func set_target(new_target):
+func set_target(_new_target):
 	pass
 
 func deal_damage(damage:int):
@@ -24,5 +24,5 @@ func deal_damage(damage:int):
 
 func kill():
 	print(name)
-	was_killed.emit(name)
+	was_killed.emit(self, name)
 	queue_free()

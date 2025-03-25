@@ -100,6 +100,9 @@ func melee():
 func _ready():
 	super._ready()
 	health = max_health
+	var scene = get_tree().current_scene
+	if scene is LevelScene:
+		set_target(scene.get_player())
 
 func _process(delta: float) -> void:
 	if target != null:
