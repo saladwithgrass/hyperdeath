@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://r7ma60m1ff8o"]
+
+[ext_resource type="PackedScene" uid="uid://snkmvpucjy1u" path="res://misc_objects/triggers/generic_trigger/generic_trigger.tscn" id="1_ojrlg"]
+[ext_resource type="Script" uid="uid://d12p3nn2qfl4d" path="res://misc_objects/triggers/light_trigger/light_trigger.gd" id="2_poxn6"]
+
+[node name="light_trigger" node_paths=PackedStringArray("lights") instance=ExtResource("1_ojrlg")]
+script = ExtResource("2_poxn6")
+lights = []
+delay = 0.0
+disable_lights = false
+
+[node name="enable_timer" type="Timer" parent="." index="1"]
+one_shot = true
+
+[connection signal="timeout" from="enable_timer" to="." method="_on_enable_timer_timeout"]

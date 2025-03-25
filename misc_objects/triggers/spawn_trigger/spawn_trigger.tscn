@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://h1c6hfq01l7h"]
+
+[ext_resource type="PackedScene" uid="uid://snkmvpucjy1u" path="res://misc_objects/triggers/generic_trigger/generic_trigger.tscn" id="1_2t5ap"]
+[ext_resource type="Script" uid="uid://dt66a1wb4lvu7" path="res://misc_objects/triggers/spawn_trigger/spawn_trigger.gd" id="2_nh8v4"]
+
+[node name="spawn_trigger" instance=ExtResource("1_2t5ap")]
+script = ExtResource("2_nh8v4")
+
+[node name="trigger_hitbox" parent="." index="0"]
+debug_color = Color(1, 0.983333, 0, 0.419608)
+
+[node name="spawners" type="Node3D" parent="." index="1"]

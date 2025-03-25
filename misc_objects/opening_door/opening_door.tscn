@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cp1mvogpigkqb"]
+
+[ext_resource type="Script" uid="uid://kfj3jcva7lc" path="res://misc_objects/opening_door/opening_door.gd" id="1_8cles"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1vkyx"]
+size = Vector3(6.43073, 3.22601, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8cles"]
+size = Vector3(6.43073, 3.22601, 1)
+
+[node name="OpeningDoor" type="Node3D"]
+script = ExtResource("1_8cles")
+
+[node name="door" type="StaticBody3D" parent="."]
+
+[node name="hitbox" type="CollisionShape3D" parent="door"]
+shape = SubResource("BoxShape3D_1vkyx")
+
+[node name="skin" type="MeshInstance3D" parent="door"]
+mesh = SubResource("BoxMesh_8cles")
+skeleton = NodePath("../..")

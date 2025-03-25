@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct6kgu50j0ae7"]
+
+[ext_resource type="PackedScene" uid="uid://h1c6hfq01l7h" path="res://misc_objects/triggers/spawn_trigger/spawn_trigger.tscn" id="1_wqrpf"]
+[ext_resource type="Script" uid="uid://dhgfnm4bn3kxj" path="res://misc_objects/triggers/spawn_trigger_death_track/spawn_trigger_death_track.gd" id="2_5lfrx"]
+
+[node name="spawn_trigger_death_track" instance=ExtResource("1_wqrpf")]
+script = ExtResource("2_5lfrx")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://snkmvpucjy1u"]
+
+[ext_resource type="Script" uid="uid://duiue5ghlg8kb" path="res://misc_objects/triggers/generic_trigger/generic_trigger.gd" id="1_43x12"]
+
+[node name="generic_trigger" type="Area3D"]
+collision_layer = 17
+collision_mask = 18
+script = ExtResource("1_43x12")
+
+[node name="trigger_hitbox" type="CollisionShape3D" parent="."]
+debug_color = Color(0.589457, 0.548067, 0, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

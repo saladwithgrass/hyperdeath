@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnk38xs08ro1m"]
+
+[ext_resource type="Script" uid="uid://dd0tbkmrb4de5" path="res://misc_objects/batch_spawner/batch_spawner.gd" id="1_551yf"]
+
+[node name="BatchSpawner" type="Node3D"]
+script = ExtResource("1_551yf")
