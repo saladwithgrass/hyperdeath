@@ -54,7 +54,7 @@ func _ready() -> void:
 	# FIXME maybe a bug here since right_direction x and y must be same
 
 func get_follow_position_on_screen() -> Vector2i:
-	return unproject_position(follow.position)
+	return unproject_position(follow.global_position)
 
 func get_forces_on_screen() -> Vector2:
 	var viewport_size = get_viewport().size
@@ -71,4 +71,4 @@ func _process(delta: float) -> void:
 	forces_3d += forces.x * right_direction
 	forces_3d -= velocity  * spring_damp
 	velocity += forces_3d * delta
-	position += velocity * delta
+	global_position += velocity * delta

@@ -3,4 +3,8 @@
 [ext_resource type="Script" uid="uid://w7h1irpdkppm" path="res://player/camera_3pv/camera_3_pv.gd" id="1_mc2wy"]
 
 [node name="camera3pv" type="Camera3D"]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
+projection = 1
+current = true
+size = 33.0
 script = ExtResource("1_mc2wy")

@@ -31,9 +31,6 @@ camera = NodePath("../camera3pv")
 
 [node name="camera3pv" parent="." node_paths=PackedStringArray("follow") instance=ExtResource("3_med2i")]
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -10, 11, 10)
-projection = 1
-current = true
-size = 33.0
 follow = NodePath("../player")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]

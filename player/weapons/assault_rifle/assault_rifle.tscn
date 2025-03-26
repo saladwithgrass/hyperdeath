@@ -1,16 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://5l7gk84ff7bb"]
+[gd_scene load_steps=4 format=3 uid="uid://5l7gk84ff7bb"]
 
 [ext_resource type="Script" uid="uid://cayufuicagjs3" path="res://player/weapons/assault_rifle/assault_rifle.gd" id="1_42igh"]
+[ext_resource type="PackedScene" uid="uid://c40x1xi87c1dp" path="res://player/weapons/generic_weapon/generic_weapon.tscn" id="1_bn65o"]
 [ext_resource type="PackedScene" uid="uid://bpcy670glt0bf" path="res://models/weapons/heavy assault rifle.glb" id="1_r6wnp"]
 
-[node name="assault_rifle" type="Node3D"]
+[node name="assault_rifle" instance=ExtResource("1_bn65o")]
 script = ExtResource("1_42igh")
+damage = 3.0
+delay_between_shots = 0.2
+automatic = true
 
-[node name="heavy assault rifle" parent="." instance=ExtResource("1_r6wnp")]
+[node name="muzzle" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.167465, -0.971974)
+
+[node name="heavy assault rifle" parent="." index="3" instance=ExtResource("1_r6wnp")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, -1, 0, 4.37114e-08, 0, 0.112776, -0.298905)
 
-[node name="muzzle" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.168637, -0.992012)
-
-[node name="shot_direction" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.169, -1.153)
+[node name="shot_direction" type="Marker3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.167389, -1.0406)

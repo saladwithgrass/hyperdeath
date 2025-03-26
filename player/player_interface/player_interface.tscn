@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgi8sq81ijj1t"]
+
+[ext_resource type="Script" uid="uid://dg06oit3sal27" path="res://player/player_interface/player_interface.gd" id="1_taknl"]
+[ext_resource type="PackedScene" uid="uid://7dfvuspo0x3r" path="res://player/player.tscn" id="1_w2sk0"]
+[ext_resource type="PackedScene" uid="uid://dgtkkjpxyghvf" path="res://player/camera_3pv/camera_3_pv.tscn" id="2_taknl"]
+
+[node name="PlayerInterface" type="Node3D"]
+process_mode = 3
+process_priority = 1
+script = ExtResource("1_taknl")
+
+[node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_w2sk0")]
+process_mode = 1
+camera = NodePath("../camera3pv")
+
+[node name="camera3pv" parent="." node_paths=PackedStringArray("follow") instance=ExtResource("2_taknl")]
+process_mode = 1
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -10, 11, 10)
+follow = NodePath("../player")

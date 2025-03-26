@@ -19,6 +19,6 @@ script = ExtResource("1_5bedm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.701919)
 shape = SubResource("BoxShape3D_g8acp")
 
-[node name="rig" type="MeshInstance3D" parent="."]
+[node name="mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.701919)
 mesh = SubResource("BoxMesh_j2msa")

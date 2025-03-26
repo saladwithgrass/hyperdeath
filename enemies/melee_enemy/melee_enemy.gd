@@ -29,9 +29,6 @@ func _ready():
 func set_target(new_target):
 	target = new_target
 
-func update_target_location():
-	nav_agent.target_position = target.position
-
 func get_next_location():
 	var current_location = global_transform.origin
 	var next_location = nav_agent.get_next_path_position()
@@ -54,13 +51,9 @@ func _physics_process(delta):
 		velocity = Vector3.ZERO
 		melee()
 	else:
-		update_target_location()
-		get_next_location()
+		go_to_target()
 		
 	$rig.look_at(target.position + Vector3(0, 0.25, 0))
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-	move_and_slide()
 
 func _process(delta: float) -> void:
 	pass

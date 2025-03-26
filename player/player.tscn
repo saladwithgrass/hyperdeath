@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b1k8dolm13n1l" path="res://assets/textures/cursor.png" id="1_n1jjx"]
 [ext_resource type="Script" uid="uid://cu6efg126e10t" path="res://player/player.gd" id="1_p2a6n"]
-[ext_resource type="PackedScene" uid="uid://cx4tcmoy3cfo5" path="res://player/weapons/Pistol.tscn" id="2_6m2sf"]
+[ext_resource type="PackedScene" uid="uid://cqrqolnlawiir" path="res://player/weapons/pistol/pistol.tscn" id="2_6m2sf"]
 [ext_resource type="Shader" uid="uid://ddwb5j0jm7iq3" path="res://assets/shader/wireframe.gdshader" id="2_rgyib"]
 [ext_resource type="PackedScene" uid="uid://bhwitv71nor4g" path="res://player/main_hud/player_hud.tscn" id="2_t5gin"]
 [ext_resource type="PackedScene" uid="uid://5l7gk84ff7bb" path="res://player/weapons/assault_rifle/assault_rifle.tscn" id="3_38xsd"]
@@ -41,6 +41,7 @@ albedo_color = Color(1, 0, 0, 1)
 emission_enabled = true
 emission = Color(1, 0, 0, 1)
 emission_energy_multiplier = 5.42
+disable_receive_shadows = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_h0x66"]
 material = SubResource("StandardMaterial3D_g3j2v")
@@ -67,6 +68,7 @@ material = SubResource("StandardMaterial3D_4k7m7")
 size = Vector2(20, 20)
 
 [node name="player" type="CharacterBody3D" node_paths=PackedStringArray("main_hud") groups=["player_group"]]
+process_mode = 3
 collision_layer = 2
 collision_mask = 13
 safe_margin = 0.05
@@ -93,7 +95,7 @@ skeleton = NodePath("../..")
 [node name="gun_muzzle" type="Marker3D" parent="rig"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.435522, 0, -0.335223)
 
-[node name="Pistol" parent="rig/gun_muzzle" instance=ExtResource("2_6m2sf")]
+[node name="pistol" parent="rig/gun_muzzle" instance=ExtResource("2_6m2sf")]
 transform = Transform3D(1.7, 0, 0, 0, 1.7, 0, 0, 0, 1.7, 0, 0, 0)
 
 [node name="assault_rifle" parent="rig/gun_muzzle" instance=ExtResource("3_38xsd")]
@@ -119,10 +121,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.654)
 
 [node name="cursor_ball" type="MeshInstance3D" parent="cursor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+cast_shadow = 0
 mesh = SubResource("SphereMesh_h0x66")
 skeleton = NodePath("../..")
 
 [node name="cursor_floor" type="MeshInstance3D" parent="cursor"]
+cast_shadow = 0
 mesh = SubResource("PlaneMesh_1ddfy")
 
 [node name="temp_floor" type="MeshInstance3D" parent="."]
@@ -134,6 +138,8 @@ one_shot = true
 
 [node name="dash_timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="parry_timer" type="Timer" parent="."]
 
 [node name="visibility_checker" type="VisibleOnScreenNotifier3D" parent="."]
 aabb = AABB(-1, 0, -1, 2, 2, 2)

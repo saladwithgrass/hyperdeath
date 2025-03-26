@@ -1,6 +1,7 @@
-[gd_scene load_steps=45 format=4 uid="uid://byvb2lvonwfuk"]
+[gd_scene load_steps=46 format=4 uid="uid://byvb2lvonwfuk"]
 
 [ext_resource type="Script" uid="uid://darxf88val3bq" path="res://player/weapons/railgun/railgun_v_1.gd" id="1_0ik2e"]
+[ext_resource type="PackedScene" uid="uid://c40x1xi87c1dp" path="res://player/weapons/generic_weapon/generic_weapon.tscn" id="1_objat"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jqqe"]
 resource_name = "Material"
@@ -24,7 +25,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_t3a2s"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_6vxnq"]
 resource_name = "railgun v1_Cube"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2.00001),
@@ -58,7 +59,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_d6r72"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_1043h"]
 resource_name = "railgun v1_Circle"
 _surfaces = [{
 "aabb": AABB(-0.0682451, -2.07107, -0.0700001, 0.13649, 2.07108, 0.133068),
@@ -97,7 +98,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_3uof5"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_4cx7o"]
 resource_name = "railgun v1_Cube_001"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2.00001),
@@ -131,7 +132,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_n1mij"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_q24dm"]
 resource_name = "railgun v1_Cube_002"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
@@ -149,7 +150,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_jj7i4")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_70hg2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aj0ea"]
+resource_name = "Material"
+cull_mode = 2
+albedo_color = Color(0, 0.220692, 0.228883, 1)
+metallic = 0.65
+roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_eow2j"]
 _surfaces = [{
@@ -164,7 +170,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_jvub0"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_g62m3"]
 resource_name = "railgun v1_Cube_003"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1.79224, 2, 2, 3.58448),
@@ -172,7 +178,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 132,
 "index_data": PackedByteArray("OAAMAEAAOAAEAAwAUwBHAFsAUwA3AEcAVQARACUAVQA9ABEACwAvABcACwAfAC8AIABdACkAIABMAF0AAwAKAAcADgAUABIAGgAiABwAJwAuACsAMwA7ADYAPgBEAEIASgBQAE4AVwBfAFoAGwAIAAIAGwAdAAgABgAWAA8ABgAJABYAEwAsACYAEwAVACwAKgAeACMAKgAtAB4ASAAhABgASABNACEAJABcAFQAJAAoAFwAWQBPAFIAWQBeAE8AMgBRAEsAMgA0AFEAVgBFAD8AVgBYAEUAQwA1ADoAQwBGADUAAAA5ADAAAAAFADkAPAANABAAPABBAA0AGQAxAEkAGQABADEA"),
-"material": SubResource("StandardMaterial3D_70hg2"),
+"material": SubResource("StandardMaterial3D_aj0ea"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 96,
@@ -195,7 +201,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_m6mi2"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_y0v77"]
 resource_name = "railgun v1_Cube_005"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 1.89455),
@@ -235,7 +241,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_pw11x"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_saq4p"]
 resource_name = "railgun v1_Cylinder"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
@@ -269,7 +275,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_dk3g5"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_pf5f6"]
 resource_name = "railgun v1_Cylinder_001"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
@@ -304,7 +310,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_1a1oo"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_cysl7"]
 resource_name = "railgun v1_Cube_006"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2.00001),
@@ -349,7 +355,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_nlxud"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_xnh62"]
 resource_name = "railgun v1_Cube_007"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
@@ -409,7 +415,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_a6501"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_kkl3n"]
 resource_name = "railgun v1_Cube_004"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2.00001, 2, 2.00001),
@@ -464,7 +470,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_cnrfs"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_pri2k"]
 resource_name = "railgun v1_Cylinder_002"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
@@ -499,7 +505,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_yqlmf"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_vg43l"]
 resource_name = "railgun v1_NurbsPath"
 _surfaces = [{
 "aabb": AABB(-0.184976, 0.0230624, 0.258124, 0.0840941, 0.086528, 0.158936),
@@ -533,7 +539,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_53gsv"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_4kry3"]
 resource_name = "railgun v1_NurbsPath_001"
 _surfaces = [{
 "aabb": AABB(-0.184976, 0.0230624, 0.258124, 0.0840941, 0.086528, 0.158936),
@@ -566,7 +572,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_aw1bl"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_dkpcj"]
 resource_name = "railgun v1_Cylinder_006"
 _surfaces = [{
 "aabb": AABB(-1, -1, -1, 2, 2, 2),
@@ -585,102 +591,113 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_rt7gd")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_6xfvi"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_11fpb"]
 height = 100.0
-radius = 0.1
 
-[node name="railgun v1" type="Node3D"]
+[node name="railgun" instance=ExtResource("1_objat")]
 script = ExtResource("1_0ik2e")
+damage = 10.0
+delay_between_shots = 2.0
+flash_time = 0.7
 
-[node name="chamber" type="MeshInstance3D" parent="."]
+[node name="muzzle" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.286975, -4.4138)
+
+[node name="muzzle_flash" parent="muzzle" index="0"]
+light_color = Color(0, 1, 1, 1)
+light_energy = 11.954
+shadow_enabled = true
+omni_range = 129.871
+omni_attenuation = 0.2
+
+[node name="skin" type="Node3D" parent="." index="3"]
+
+[node name="chamber" type="MeshInstance3D" parent="skin" index="0"]
 transform = Transform3D(0.25, 0, 0, 0, 0.13, 0, 0, 0, 1.1, 0, 0.286975, -0.815048)
-mesh = SubResource("ArrayMesh_t3a2s")
+mesh = SubResource("ArrayMesh_6vxnq")
 skeleton = NodePath("")
 
-[node name="barrel" type="MeshInstance3D" parent="."]
+[node name="barrel" type="MeshInstance3D" parent="skin" index="1"]
 transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1.01397, 0, 0, 0.286975, -1.81771)
-mesh = SubResource("ArrayMesh_d6r72")
+mesh = SubResource("ArrayMesh_1043h")
 skeleton = NodePath("")
 
-[node name="muzzle mesh" type="MeshInstance3D" parent="."]
+[node name="muzzle mesh" type="MeshInstance3D" parent="skin" index="2"]
 transform = Transform3D(0.2, 0, 0, 0, 0.075, 0, 0, 0, 0.25, 0, 0.286975, -4.05729)
-mesh = SubResource("ArrayMesh_3uof5")
+mesh = SubResource("ArrayMesh_4cx7o")
 skeleton = NodePath("")
 
-[node name="mag" type="MeshInstance3D" parent="."]
+[node name="mag" type="MeshInstance3D" parent="skin" index="3"]
 transform = Transform3D(-2.38419e-08, 0.0262424, 0.075471, 5.96046e-09, 0.0301884, -0.0656059, -0.2, -1.19209e-09, -1.19209e-08, 0.195952, 0.379885, -0.369582)
-mesh = SubResource("ArrayMesh_n1mij")
+mesh = SubResource("ArrayMesh_q24dm")
 skeleton = NodePath("")
 
-[node name="handle mesh" type="MeshInstance3D" parent="."]
+[node name="handle mesh" type="MeshInstance3D" parent="skin" index="4"]
 transform = Transform3D(0.05, 0, 0, 0, 0.15, 0, 0, 0, 0.0908312, 0, 0.0201666, -0.0164877)
-mesh = SubResource("ArrayMesh_jvub0")
+mesh = SubResource("ArrayMesh_g62m3")
 skeleton = NodePath("")
 
-[node name="stock" type="MeshInstance3D" parent="."]
+[node name="stock" type="MeshInstance3D" parent="skin" index="5"]
 transform = Transform3D(0.1, 0, 0, 0, 0.25, 0, 0, 0, 0.15, 0, 0.227646, 0.631451)
-mesh = SubResource("ArrayMesh_m6mi2")
+mesh = SubResource("ArrayMesh_y0v77")
 skeleton = NodePath("")
 
-[node name="stock compensator" type="MeshInstance3D" parent="."]
+[node name="stock compensator" type="MeshInstance3D" parent="skin" index="6"]
 transform = Transform3D(0.025, 0, 0, 0, 0, -0.025, 0, 0.1, 0, 0, 0.227431, 0.382931)
-mesh = SubResource("ArrayMesh_pw11x")
+mesh = SubResource("ArrayMesh_saq4p")
 skeleton = NodePath("")
 
-[node name="stock compensator_001" type="MeshInstance3D" parent="."]
+[node name="stock compensator_001" type="MeshInstance3D" parent="skin" index="7"]
 transform = Transform3D(0.025, 0, 0, 0, 0, -0.025, 0, 0.1, 0, 0, 0.357801, 0.382931)
-mesh = SubResource("ArrayMesh_dk3g5")
+mesh = SubResource("ArrayMesh_pf5f6")
 skeleton = NodePath("")
 
-[node name="sight" type="MeshInstance3D" parent="."]
+[node name="sight" type="MeshInstance3D" parent="skin" index="8"]
 transform = Transform3D(0.07, 0, 0, 0, 0.05, 0, 0, 0, 0.3, 0, 0.483014, -0.799097)
-mesh = SubResource("ArrayMesh_1a1oo")
+mesh = SubResource("ArrayMesh_cysl7")
 skeleton = NodePath("")
 
-[node name="mag insert" type="MeshInstance3D" parent="."]
+[node name="mag insert" type="MeshInstance3D" parent="skin" index="9"]
 transform = Transform3D(-1.37091e-08, 0.032803, 0.0792445, 3.42727e-09, 0.0377355, -0.0688862, -0.115, -1.49012e-09, -1.2517e-08, 0.190678, 0.377248, -0.61048)
-mesh = SubResource("ArrayMesh_nlxud")
+mesh = SubResource("ArrayMesh_xnh62")
 skeleton = NodePath("")
 
-[node name="sight cover" type="MeshInstance3D" parent="."]
+[node name="sight cover" type="MeshInstance3D" parent="skin" index="10"]
 transform = Transform3D(-0.085, 0, -4.37114e-09, 0, 0.05, 0, 7.43094e-09, 0, -0.05, 0, 0.502328, -0.52669)
-mesh = SubResource("ArrayMesh_a6501")
+mesh = SubResource("ArrayMesh_kkl3n")
 skeleton = NodePath("")
 
-[node name="shot tube" type="MeshInstance3D" parent="."]
+[node name="shot tube" type="MeshInstance3D" parent="skin" index="11"]
 transform = Transform3D(0.025, 0, 0, 0, 0, -0.025, 0, 0.625, 0, -0.152296, 0.360094, -1.11192)
-mesh = SubResource("ArrayMesh_cnrfs")
+mesh = SubResource("ArrayMesh_pri2k")
 skeleton = NodePath("")
 
-[node name="NurbsPath" type="MeshInstance3D" parent="."]
+[node name="NurbsPath" type="MeshInstance3D" parent="skin" index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.286975, -0.815048)
-mesh = SubResource("ArrayMesh_yqlmf")
+mesh = SubResource("ArrayMesh_vg43l")
 skeleton = NodePath("")
 
-[node name="NurbsPath_001" type="MeshInstance3D" parent="."]
+[node name="NurbsPath_001" type="MeshInstance3D" parent="skin" index="13"]
 transform = Transform3D(0, -1, -4.37114e-08, -1, 0, -4.37114e-08, 4.37114e-08, 4.37114e-08, -1, -0.0808172, 0.208169, -1.45037)
-mesh = SubResource("ArrayMesh_53gsv")
+mesh = SubResource("ArrayMesh_4kry3")
 skeleton = NodePath("")
 
-[node name="Cylinder" type="MeshInstance3D" parent="."]
+[node name="Cylinder" type="MeshInstance3D" parent="skin" index="14"]
 transform = Transform3D(0.015, 0, 0, 0, 0, -0.015, 0, 1.4, 0, -0.0514885, 0.344642, -2.78429)
-mesh = SubResource("ArrayMesh_aw1bl")
+mesh = SubResource("ArrayMesh_dkpcj")
 skeleton = NodePath("")
 
-[node name="muzzle" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.286975, -4.36788)
-
-[node name="shot direct" type="Marker3D" parent="."]
+[node name="shot direct" type="Marker3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.286975, -5.39174)
 
-[node name="shot ray" type="RayCast3D" parent="."]
+[node name="shot ray" type="RayCast3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-06, -1, 0, 100, -4.37114e-08, 0, 0.275749, -4.44427)
 
-[node name="shot_cylinder" type="Area3D" parent="."]
+[node name="shot_cylinder" type="Area3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.276, -4.444)
 collision_layer = 0
 collision_mask = 5
 
-[node name="shot_shape" type="CollisionShape3D" parent="shot_cylinder"]
+[node name="shot_shape" type="CollisionShape3D" parent="shot_cylinder" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -50)
-shape = SubResource("CylinderShape3D_6xfvi")
+shape = SubResource("CylinderShape3D_11fpb")

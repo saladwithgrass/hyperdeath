@@ -1,6 +1,5 @@
 extends Weapon
 
-var shot_timer:Timer = Timer.new()
 var ray_scene = preload("res://player/weapons/railgun/blue_ray.tscn")
 
 # alt fire functions like this:
@@ -28,20 +27,16 @@ var charge_state:ChargeStates = ChargeStates.not_charging
 func _ready():
 	charge_gradient.add_point(0, min_charge_color)
 	charge_gradient.add_point(max_before_full_charge, max_charge_color)
-	damage = 10
 	automatic = false
-	delay_between_shots = 2
 	shot_timer.autostart = false
 	shot_timer.one_shot = false
-	shot_timer.connect("timeout", shot_cd_elapsed)
 	shot_timer.wait_time = delay_between_shots
-	add_child(shot_timer)
 
 func detect_collisions(damage = self.damage):
 	var ray:RayCast3D = $"shot ray"
 	var length = 100
 	if ray.get_collider() != null:
-		length = (ray.get_collision_point() - $muzzle.global_position).length()
+		length = (ray.get_collision_point() - muzzle.global_position).length()
 	for body in $shot_cylinder.get_overlapping_bodies():
 		var distance_sq = (ray.global_position - body.global_position).length_squared()
 		if body is Killable and distance_sq <= length*length:
@@ -55,10 +50,11 @@ func spawn_ray(ray_length, color:Color = Color.BLACK, new_emission_strength = 0)
 		print("color_is_not_black")
 		ray.set_color(color, new_emission_strength)
 	get_tree().root.add_child(ray)
-	ray.global_position = $muzzle.global_position
+	ray.global_position = muzzle.global_position
 	ray.look_at($"shot direct".global_position)
 
 func shoot():
+	activate_muzzle_flash()
 	if is_shot_on_cd:
 		return
 	charge_state = ChargeStates.not_charging

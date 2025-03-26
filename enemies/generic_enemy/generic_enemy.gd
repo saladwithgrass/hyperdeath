@@ -17,6 +17,8 @@ class_name GenericEnemy
 @export var projectile_template:PackedScene
 @export var gun_muzzle:Marker3D
 
+@export var is_floored:bool = true
+
 # basic parameters
 var speed = 5
 
@@ -69,7 +71,7 @@ func check_target_visibility():
 
 # updates location of target
 func update_target_location():
-	nav_agent.target_position = target.position
+	nav_agent.target_position = target.global_position
 
 # set new velocity in order to follow
 # the path to target
@@ -78,6 +80,15 @@ func set_next_velocity():
 	var next_location = nav_agent.get_next_path_position()
 	var new_velocity = (next_location - current_location).normalized() * speed
 	velocity = new_velocity
+	velocity.y = 0
+	if not is_on_floor():
+		velocity.y -= Globals.g
+
+func go_to_target():
+	update_target_location()
+	set_next_velocity()
+	self.move_and_slide()
+	$rig.look_at(position + velocity*100)
 
 # spawn a new projectile and send itt
 func shoot():
@@ -85,10 +96,10 @@ func shoot():
 	if not check_target_visibility():
 		return
 	var bullet = projectile_template.instantiate()
-	var bullet_direction = target.position - gun_muzzle.global_position
+	var bullet_direction = target.global_position - gun_muzzle.global_position
 	bullet_direction.y = 0
-	bullet.position = gun_muzzle.global_position
 	owner.add_child(bullet)
+	bullet.global_position = gun_muzzle.global_position
 	bullet.set_new_direction(bullet_direction)
 
 # do a melee
@@ -105,14 +116,14 @@ func _ready():
 		set_target(scene.get_player())
 
 func _process(delta: float) -> void:
+	if not is_on_floor():
+		velocity = -Vector3.UP * Globals.g
+		move_and_slide()
 	if target != null:
 		if check_target_visibility():
-			$rig.look_at(target.position)
+			$rig.look_at(target.global_position)
 		else:
-			update_target_location()
-			set_next_velocity()
-			self.move_and_slide()
-			$rig.look_at(position + velocity*100)
+			go_to_target()
 
 func _on_attack_timer_timeout() -> void:
 	# print('shooting')

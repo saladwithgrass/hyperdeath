@@ -3,12 +3,6 @@ class_name Player
 # external scenes
 var bullet_scene = preload("res://misc_objects/bullet/bullet.tscn")
 
-var enemy_scene = preload("res://enemies/basic_enemy_v2/basic_enemy_v2.tscn")
-var melee_enemy_scene = preload("res://enemies/melee_enemy/melee_enemy.tscn")
-var dummy_scene = preload("res://enemies/dummy/dummy.tscn")
-var machine_gunner_scene = preload("res://enemies/machine_gunner_enemy/machine_gunner_enemy.tscn")
-
-var spawn_scenes = [dummy_scene, enemy_scene, melee_enemy_scene, machine_gunner_scene]
 
 # child nodes
 @onready var cursor = $cursor
@@ -17,7 +11,7 @@ var spawn_scenes = [dummy_scene, enemy_scene, melee_enemy_scene, machine_gunner_
 @onready var melee_hitbox = $rig/melee_hitbox/melee_col
 @onready var melee_timer = $melee_timer
 @onready var dash_timer = $dash_timer
-@onready var pistol:Weapon = $rig/gun_muzzle/Pistol
+@onready var pistol:Weapon = $rig/gun_muzzle/pistol
 @onready var assault_rifle:Weapon = $rig/gun_muzzle/assault_rifle
 @onready var railgun:Weapon = $"rig/gun_muzzle/railgun v1"
 @onready var weapon = pistol
@@ -86,7 +80,6 @@ func deal_damage(damage):
 	main_hud.update_vitality(health, max_health)
 
 # visual updates
-
 func move_cursor():
 	var player_pos = global_transform.origin
 	var drop_plane = Plane(Vector3(0, 1, 0), player_pos.y)
@@ -114,8 +107,35 @@ func update_indicators():
 func shoot():
 	weapon.shoot()
 
+func stop_shooting():
+	weapon.stop_shooting()
+
+func next_weapon():
+		weapon.visible = false
+		weapon.stop_shooting()
+		current_weapon += 1
+		current_weapon %= weapons.size()
+		weapon = weapons[current_weapon]
+		weapon.visible = true
+
+func prev_weapon():
+	weapon.visible = false
+	weapon.stop_shooting()
+	current_weapon += weapons.size()
+	current_weapon -= 1
+	current_weapon %= weapons.size()
+	weapon = weapons[current_weapon]
+	weapon.visible = true
+
+func alt_fire():
+	weapon.alt_fire_start()
+
+func alt_fire_stop():
+	weapon.alt_fire_stop()
+
 var prev_collision_layer
 var prev_collision_mask
+
 func dash():
 	if is_dash_on_cd:
 		return
@@ -134,80 +154,9 @@ func dash():
 	velocity.y = 0
 	dash_timer.start(dash_duration)
 
-func melee():
-	if is_melee_on_cd:
+func move(direction):
+	if is_dashing:
 		return
-	melee_hitbox.disabled = false
-	is_meleeing = true
-	melee_timer.start(melee_duration)
-
-func spawn_enemy(scene:PackedScene):
-	var enemy:Killable = scene.instantiate()
-	enemy.position = self.position + cursor.position
-	enemy.set_target(self)
-	owner.add_child(enemy)
-	enemy.set_owner(owner)
-# process by tick
-
-func process_spawns():
-	if Input.is_action_just_pressed("spawn_0"):
-		spawn_enemy(spawn_scenes[0])
-	if Input.is_action_just_pressed("spawn_1"):
-		spawn_enemy(spawn_scenes[1])
-	if Input.is_action_just_pressed("spawn_2"):
-		spawn_enemy(spawn_scenes[2])
-	if Input.is_action_just_pressed("spawn_3"):
-		spawn_enemy(spawn_scenes[3])
-	if Input.is_action_just_pressed("spawn_4") and len(spawn_scenes) > 4:
-		spawn_enemy(spawn_scenes[4])
-	if Input.is_action_just_pressed("spawn_5") and len(spawn_scenes) > 5:
-		spawn_enemy(spawn_scenes[5])
-
-func process_inputs(delta):
-	if Input.is_action_just_pressed("scroll_up"):
-		weapon.visible = false
-		weapon.stop_shooting()
-		current_weapon += 1
-		current_weapon %= weapons.size()
-		weapon = weapons[current_weapon]
-		weapon.visible = true
-
-	if Input.is_action_just_pressed("scroll_down"):
-		weapon.visible = false
-		weapon.stop_shooting()
-		current_weapon += weapons.size()
-		current_weapon -= 1
-		current_weapon %= weapons.size()
-		weapon = weapons[current_weapon]
-		weapon.visible = true
-	if Input.is_action_just_pressed("RMB"):
-		weapon.alt_fire_start()
-	
-	if Input.is_action_just_released("RMB"):
-		weapon.alt_fire_stop()
-	
-	if Input.is_action_just_pressed("F"):
-		# melee()
-		$rig/melee_hitbox/melee_col.disabled = false
-	if Input.is_action_just_released("F"):
-		# melee()
-		$rig/melee_hitbox/melee_col.disabled = true
-	if Input.is_action_just_pressed("ESC"):
-		get_tree().quit(0)
-
-	process_spawns()
-	if Input.is_action_just_pressed("LMB"):
-		shoot()
-	if Input.is_action_just_released("LMB"):
-		weapon.stop_shooting()
-	if Input.is_action_just_pressed("shift"):
-		dash()
-		return
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("left", "right", "forward", "backward")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
@@ -215,11 +164,22 @@ func process_inputs(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
+func melee():
+	if is_melee_on_cd:
+		return
+	melee_hitbox.disabled = false
+	is_meleeing = true
+	melee_timer.start(melee_duration)
+
+func parry():
+	$parry_timer.start()
+
 func _physics_process(delta):
 	# process cursor position
 	move_cursor()
 	look_at_cursor()
 	update_indicators()
+
 	
 	# process dash timer
 	if (is_dashing):
@@ -230,7 +190,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	process_inputs(delta)
+	# process_inputs(delta)
 	move_and_slide()
 
 func _on_melee_hitbox_body_entered(body):
@@ -250,7 +210,6 @@ func _on_melee_hitbox_body_entered(body):
 func _on_melee_hitbox_body_exited(body):
 	if body is Killable:
 		body.is_being_parried = false
-
 
 func _on_melee_timer_timeout():
 	if is_meleeing:

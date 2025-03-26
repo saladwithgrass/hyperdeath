@@ -1,8 +1,7 @@
-[gd_scene load_steps=88 format=4 uid="uid://csdg8jk2etate"]
+[gd_scene load_steps=87 format=4 uid="uid://csdg8jk2etate"]
 
 [ext_resource type="Script" uid="uid://dkjtv4mxj1iqo" path="res://levels/generic_level/level_scene.gd" id="1_dehso"]
-[ext_resource type="PackedScene" uid="uid://7dfvuspo0x3r" path="res://player/player.tscn" id="1_s12gf"]
-[ext_resource type="PackedScene" uid="uid://dgtkkjpxyghvf" path="res://player/camera_3pv/camera_3_pv.tscn" id="2_dehso"]
+[ext_resource type="PackedScene" uid="uid://bgi8sq81ijj1t" path="res://player/player_interface/player_interface.tscn" id="2_r1j45"]
 [ext_resource type="Texture2D" uid="uid://c2w6dlml2xvl" path="res://assets/textures/light_line.png" id="4_fvtsk"]
 [ext_resource type="Script" uid="uid://davxi014gf0gq" path="res://levels/demo_arena_2/room_1_light_main.gd" id="4_whsj1"]
 [ext_resource type="Script" uid="uid://dt66a1wb4lvu7" path="res://misc_objects/triggers/spawn_trigger/spawn_trigger.gd" id="4_yxse3"]
@@ -612,23 +611,8 @@ metadata/_custom_type_script = "uid://dkjtv4mxj1iqo"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r1j45")
 
-[node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_s12gf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.73494, 0.543897, 87.9665)
-camera = NodePath("../camera3pv")
-
-[node name="SpotLight3D4" type="SpotLight3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 7.214, 0)
-light_energy = 11.182
-spot_range = 9.796
-spot_angle = 21.0227
-spot_angle_attenuation = 2.92817
-
-[node name="camera3pv" parent="." node_paths=PackedStringArray("follow") instance=ExtResource("2_dehso")]
-transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -6.42109, 11.8179, 95.3855)
-projection = 1
-current = true
-size = 33.0
-follow = NodePath("../player")
+[node name="PlayerInterface" parent="." instance=ExtResource("2_r1j45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.90859, 0, 85.6736)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_yxse3")

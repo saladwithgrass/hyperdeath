@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://c40x1xi87c1dp"]
+
+[ext_resource type="Script" uid="uid://co2mkyh1v138i" path="res://player/weapons/generic_weapon/generic_weapon.gd" id="1_wwo26"]
+
+[node name="GenericWeapon" type="Node3D"]
+script = ExtResource("1_wwo26")
+metadata/_custom_type_script = "uid://co2mkyh1v138i"
+
+[node name="shot_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="muzzle" type="Marker3D" parent="."]
+
+[node name="muzzle_flash" type="OmniLight3D" parent="muzzle"]
+visible = false
+
+[node name="muzzle_flash_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="shot_timer" to="." method="shot_cd_elapsed"]
+[connection signal="timeout" from="muzzle_flash_timer" to="." method="muzzle_flash_timeout"]

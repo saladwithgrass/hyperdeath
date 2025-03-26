@@ -1,3 +1,8 @@
+# TODOs
+## Refactor the UI
+Ideally the player should be kind of like an NPC, with interface being around him.
+
+
 # Mechanics
 
 ## Walk --- Done
@@ -36,6 +41,11 @@ A guy that teleports behind player and tries to melee.
 ## Main Menu
 I could make the main menu look like a terminal. When player boots the game, it prints the help list to console and the player has to type in commands to select proper options. Would be cool.
 
+# Known Bugs
+## Player enemy spawn
+When pressing all three spawn keys, one enemy spawns in the air and cannot go down.
+
 # Crazy Ideas for the future
 ## Melee Kick
 When doing a melee, check if there are any projectiles coming, if there are none, perform a kick, otherwise, parry.
+
