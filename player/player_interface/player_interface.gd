@@ -10,13 +10,14 @@ var spawn_scenes = [dummy_scene, enemy_scene, melee_enemy_scene, machine_gunner_
 
 @onready var player:Player = $player
 
+var is_wait_for_respawn:bool = false
+
 func spawn_enemy(scene:PackedScene):
 	var enemy:Killable = scene.instantiate()
-	enemy.set_target(self)
+	enemy.set_target(player)
 	owner.add_child(enemy)
 	enemy.set_owner(owner)
 	enemy.global_position = player.global_position + player.cursor.position
-
 
 func process_spawns():
 	if Input.is_action_just_pressed("spawn_0"):
@@ -33,6 +34,10 @@ func process_spawns():
 		spawn_enemy(spawn_scenes[5])
 
 func process_inputs(delta):
+	if is_wait_for_respawn:
+		if Input.is_action_just_pressed("restart"):
+			restart()
+	
 	# SWITCHING WEAPONS
 	if Input.is_action_just_pressed("next_weapon"):
 		player.next_weapon()
@@ -74,6 +79,17 @@ func process_inputs(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	player.move(direction)
 
+func player_died(_player_entity:Player, _player_name:String):
+	player.main_hud.show_death()
+	get_tree().paused = true
+	is_wait_for_respawn = true
+
+func restart():
+	get_tree().paused = false
+	get_tree().reload_current_scene()
+
+func refill_health(how_much:float=-1):
+	player.refill_health(how_much)
 
 func _process(delta: float) -> void:
 	process_inputs(delta)

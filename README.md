@@ -2,6 +2,8 @@
 ## Refactor the UI
 Ideally the player should be kind of like an NPC, with interface being around him.
 
+## Rebalance LMG
+Right now it's too powerful, i don't like it.
 
 # Mechanics
 
@@ -49,3 +51,6 @@ When pressing all three spawn keys, one enemy spawns in the air and cannot go do
 ## Melee Kick
 When doing a melee, check if there are any projectiles coming, if there are none, perform a kick, otherwise, parry.
 
+## ENLIGHTENMENT IS A DRUG
+### NOOSPHERE IS REAL
+Due to a huge amount of information floating around in the net field, which can actually be called Noosphere., some people can start receiving overwhelming amounts of ideas and concepts. The longer a person draws information from the the more addicted he becomes. However when a person gets cut off from this field, they get a very tough withdrawal syndrome.

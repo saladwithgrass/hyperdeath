@@ -2,11 +2,11 @@ extends GenericEnemy
 class_name MachineGunnerEnemy
 
 @export var mag_size:int = 30
-var cur_bullet_count:int = mag_size
+@onready var cur_bullet_count:int = mag_size
 
 @export var reload_time:float = 3
 @export var fire_rate:float = 15
-var delay_between_shots = 1.0 / fire_rate
+@onready var delay_between_shots = 1.0 / fire_rate
 
 func _ready():
 	super._ready()

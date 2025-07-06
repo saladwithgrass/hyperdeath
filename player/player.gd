@@ -3,7 +3,7 @@ class_name Player
 # external scenes
 var bullet_scene = preload("res://misc_objects/bullet/bullet.tscn")
 
-
+ 
 # child nodes
 @onready var cursor = $cursor
 @onready var rig = $rig
@@ -15,8 +15,6 @@ var bullet_scene = preload("res://misc_objects/bullet/bullet.tscn")
 @onready var assault_rifle:Weapon = $rig/gun_muzzle/assault_rifle
 @onready var railgun:Weapon = $"rig/gun_muzzle/railgun v1"
 @onready var weapon = pistol
-
-
 
 # movement values
 const SPEED = Globals.player_speed
@@ -43,8 +41,6 @@ const melee_damage = Globals.player_melee_damage
 # UI elemets
 @export var main_hud:PlayerMainHud
 
-# @onready var dash_indicator:Label = $ui/background/dash_status
-
 # @onready var health_indicator:Label = $ui/background/health_status
 # const flash_after_damage = 0.15
 # var vitality_timer = -1
@@ -68,10 +64,17 @@ func _ready():
 	health = Globals.player_health
 	$temp_floor.visible = false
 
+func refill_health(how_much:float=-1):
+	if how_much != -1:
+		health += how_much
+	else:
+		health = Globals.player_health
+	main_hud.update_vitality(health, max_health)
+
 # Killable override
 func kill():
-	return
-	print("player killed")
+	was_killed.emit(self, "player")
+	is_dead = true
 
 func deal_damage(damage):
 	health -= damage

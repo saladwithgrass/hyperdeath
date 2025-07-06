@@ -2,10 +2,13 @@ extends CharacterBody3D
 class_name Killable
 
 @export var max_health:float
-var health:int
+@export var delete_on_death:bool = true
+@export var is_dead:bool = false
+
+var health:float
 var is_being_parried:bool = false
 
-signal taken_damage(name:String, damage:int)
+signal taken_damage(name:String, damage:float)
 signal was_killed(who:Killable, name:String)
 
 func _ready():
@@ -16,7 +19,7 @@ func _ready():
 func set_target(_new_target):
 	pass
 
-func deal_damage(damage:int):
+func deal_damage(damage:float):
 	taken_damage.emit(name, damage)
 	health -= damage
 	if (health <= 0):
@@ -25,4 +28,5 @@ func deal_damage(damage:int):
 func kill():
 	print(name)
 	was_killed.emit(self, name)
-	queue_free()
+	if delete_on_death:
+		queue_free()

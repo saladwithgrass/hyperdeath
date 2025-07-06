@@ -51,10 +51,16 @@ func update_dash_indicator(dash_percentage):
 		dash_indicator.text = "ready"
 
 func update_vitality(health, max_health):
-	var health_text = str(health) + "/" + str(max_health)
+	var health_text = str(int(health)) + "/" + str(int(max_health))
 	health_indicator.text = health_text
 	health_indicator.label_settings.font_color = Color.RED
 	vitality_timer.start()
+
+func show_death():
+	$death_screen.visible = true
+
+func hide_death():
+	$death_screen.visible = false
 
 func _on_log_line_timer_1_timeout():
 	var cur_alpha = log_lines[0].label_settings.font_color.a8

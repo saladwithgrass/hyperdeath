@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk1xbp38oser0"]
+
+[ext_resource type="Theme" uid="uid://bu3d6f8d7tgud" path="res://player/main_hud/main_ui_theme.tres" id="1_jl07q"]
+[ext_resource type="Script" uid="uid://8e4x03udqxlb" path="res://player/main_hud/help_menu.gd" id="2_cmkvt"]
+
+[node name="help_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jl07q")
+script = ExtResource("2_cmkvt")
+
+[node name="all_actions" type="Tree" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jl07q")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+columns = 2
+hide_folding = true
+enable_recursive_folding = false

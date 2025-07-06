@@ -37,6 +37,7 @@ func get_next_location():
 
 # actions
 func melee():
+	print('meeleing')
 	if is_melee_on_cd or is_melee_on_windup:
 		return
 	is_melee_on_windup = true
@@ -47,13 +48,17 @@ func _physics_process(delta):
 	# check if it has to move to the player
 	# 0.9 is there just to account for some errors
 
-	if ($rig/melee_hitbox/melee_marker.global_position - target.position).length() <= melee_reach * 1.2:
-		velocity = Vector3.ZERO
-		melee()
+	if is_melee_on_windup or is_meleeing:
+		return
+
+	if (%melee_marker.global_position - target.global_position)\
+		.length_squared() <= melee_reach**2:
+			velocity = Vector3.ZERO
+			melee()
 	else:
 		go_to_target()
 		
-	$rig.look_at(target.position + Vector3(0, 0.25, 0))
+	$rig.look_at(target.global_position + Vector3(0, %melee_marker.position.y*0, 0))
 
 func _process(delta: float) -> void:
 	pass

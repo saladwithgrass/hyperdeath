@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://uk1wb1gcnv0q"]
+
+[ext_resource type="Script" uid="uid://e4kytsgbb8yj" path="res://enemies/generic_enemy/generic_enemy.gd" id="1_jqfit"]
+[ext_resource type="PackedScene" uid="uid://7f7a75jye8wi" path="res://misc_objects/bullet/bullet.tscn" id="2_h6fu2"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jqfit"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cb5rn"]
+
+[node name="teleporting_enemy" type="CharacterBody3D" node_paths=PackedStringArray("gun_muzzle")]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_jqfit")
+projectile_template = ExtResource("2_h6fu2")
+gun_muzzle = NodePath("rig/gun_muzzle")
+
+[node name="rig" type="Node3D" parent="."]
+
+[node name="gun_muzzle" type="Marker3D" parent="rig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30428, -1.11663)
+
+[node name="skin" type="MeshInstance3D" parent="rig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_jqfit")
+skeleton = NodePath("../..")
+
+[node name="hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_cb5rn")
+
+[node name="navigation_agent" type="NavigationAgent3D" parent="."]
+
+[node name="attack_timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]

@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bu3d6f8d7tgud"]
+
+[ext_resource type="FontFile" uid="uid://bj7d61dymsjdn" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="1_8g5e3"]
+
+[resource]
+default_font = ExtResource("1_8g5e3")

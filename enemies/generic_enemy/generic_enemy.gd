@@ -11,6 +11,7 @@ class_name GenericEnemy
 # variables that determine attack capabilities
 @export_group("Attack Details")
 @export var can_shoot:bool = true
+@export var shot_damage:float = 1
 @export var can_melee:bool = false
 
 # projectile variable that is spawned when shooting
@@ -88,7 +89,8 @@ func go_to_target():
 	update_target_location()
 	set_next_velocity()
 	self.move_and_slide()
-	$rig.look_at(position + velocity*100)
+	if not velocity.is_zero_approx():
+		$rig.look_at(position + velocity*100)
 
 # spawn a new projectile and send itt
 func shoot():
@@ -97,6 +99,8 @@ func shoot():
 		return
 	var bullet = projectile_template.instantiate()
 	var bullet_direction = target.global_position - gun_muzzle.global_position
+	if bullet is Projectile:
+		bullet.damage = self.shot_damage
 	bullet_direction.y = 0
 	owner.add_child(bullet)
 	bullet.global_position = gun_muzzle.global_position

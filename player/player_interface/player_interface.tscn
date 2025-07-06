@@ -17,3 +17,5 @@ camera = NodePath("../camera3pv")
 process_mode = 1
 transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, -10, 11, 10)
 follow = NodePath("../player")
+
+[connection signal="was_killed" from="player" to="." method="player_died"]

@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name  Projectile
 
 const speed = Globals.bullet_speed
-var damage = 1
+var damage:float = 1
 var lifetime = 7 # s
 
 func set_new_velocity(new_velocity:Vector3):

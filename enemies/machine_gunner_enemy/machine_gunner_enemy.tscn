@@ -22,6 +22,7 @@ script = ExtResource("2_mjkcd")
 mag_size = 30
 reload_time = 3.0
 fire_rate = 15.0
+shot_damage = 0.2
 projectile_template = ExtResource("3_giw0b")
 max_health = 10.0
 

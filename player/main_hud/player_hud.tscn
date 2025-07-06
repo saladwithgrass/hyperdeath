@@ -1,12 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://bhwitv71nor4g"]
 
+[ext_resource type="Theme" uid="uid://bu3d6f8d7tgud" path="res://player/main_hud/main_ui_theme.tres" id="1_fkcgo"]
 [ext_resource type="Script" uid="uid://b4hus8p276w0o" path="res://player/main_hud/player_hud.gd" id="1_g548d"]
-[ext_resource type="FontFile" uid="uid://bj7d61dymsjdn" path="res://assets/fonts/HomeVideo-BLG6G.ttf" id="2_yva1j"]
 [ext_resource type="LabelSettings" uid="uid://dmsw0foi21e0n" path="res://assets/fonts/red_player_ui.tres" id="3_ykr26"]
 [ext_resource type="PackedScene" uid="uid://dx8nblqhvnwau" path="res://global_stuff/logger.tscn" id="4_7yr5u"]
-
-[sub_resource type="Theme" id="Theme_mjrm6"]
-default_font = ExtResource("2_yva1j")
+[ext_resource type="PackedScene" uid="uid://b00wctf12lsds" path="res://player/health_hud/death_screen.tscn" id="5_fkcgo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gl522"]
 font_color = Color(0, 1, 0, 1)
@@ -35,7 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_mjrm6")
+theme = ExtResource("1_fkcgo")
 script = ExtResource("1_g548d")
 
 [node name="background" type="ColorRect" parent="."]
@@ -159,6 +157,10 @@ wait_time = 0.15
 one_shot = true
 
 [node name="logger" parent="." groups=["Logger"] instance=ExtResource("4_7yr5u")]
+
+[node name="death_screen" parent="." instance=ExtResource("5_fkcgo")]
+visible = false
+layout_mode = 1
 
 [connection signal="timeout" from="flash_timer" to="." method="_on_flash_timer_timeout"]
 [connection signal="timeout" from="log_line_timer1" to="." method="_on_log_line_timer_1_timeout"]
