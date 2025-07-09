@@ -19,7 +19,8 @@ func activate_muzzle_flash():
 	muzzle_flash_timer.start(flash_time)
 
 func adjust_flash_brightness():
-	muzzle_flash.light_energy = muzzle_flash_timer.time_left / flash_time * max_muzzle_energy
+	var time_percentage = muzzle_flash_timer.time_left / flash_time
+	muzzle_flash.light_energy = time_percentage * time_percentage * max_muzzle_energy
 
 func muzzle_flash_timeout() -> void:
 	muzzle_flash.visible = false

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dkjtv4mxj1iqo" path="res://levels/generic_level/level_scene.gd" id="1_dehso"]
 [ext_resource type="PackedScene" uid="uid://bgi8sq81ijj1t" path="res://player/player_interface/player_interface.tscn" id="2_r1j45"]
-[ext_resource type="Texture2D" uid="uid://c2w6dlml2xvl" path="res://assets/textures/light_line.png" id="4_fvtsk"]
+[ext_resource type="Texture2D" uid="uid://c58hka4l8id1g" path="res://assets/textures/light_line.png" id="4_fvtsk"]
 [ext_resource type="Script" uid="uid://davxi014gf0gq" path="res://levels/demo_arena_2/room_1_light_main.gd" id="4_whsj1"]
 [ext_resource type="Script" uid="uid://dt66a1wb4lvu7" path="res://misc_objects/triggers/spawn_trigger/spawn_trigger.gd" id="4_yxse3"]
 [ext_resource type="Script" uid="uid://dhgfnm4bn3kxj" path="res://misc_objects/triggers/spawn_trigger_death_track/spawn_trigger_death_track.gd" id="5_com2i"]

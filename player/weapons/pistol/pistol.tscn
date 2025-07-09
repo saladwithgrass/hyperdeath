@@ -28,8 +28,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.067, -0.283)
 [node name="muzzle_flash" parent="muzzle" index="0"]
 light_color = Color(1, 1, 0.341176, 1)
 shadow_enabled = true
-omni_range = 28.134
-omni_attenuation = 1.539
+omni_range = 14.055
+omni_attenuation = 1.048
 
 [node name="barrel" type="MeshInstance3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0644351, -0.0930444)
