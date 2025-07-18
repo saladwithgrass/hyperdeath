@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://7f7a75jye8wi"]
 
-[ext_resource type="Script" uid="uid://6do20r7eu5sx" path="res://misc_objects/bullet/bullet.gd" id="1_5bedm"]
-[ext_resource type="Material" uid="uid://cpspjicc0lw8u" path="res://misc_objects/bullet/active_bullet.tres" id="2_x8lfy"]
+[ext_resource type="Script" uid="uid://6do20r7eu5sx" path="res://weapons/projectiles/bullet/bullet.gd" id="1_5bedm"]
+[ext_resource type="Material" uid="uid://cpspjicc0lw8u" path="res://weapons/projectiles/bullet/active_bullet.tres" id="2_x8lfy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g8acp"]
 size = Vector3(0.1, 0.1, 1)

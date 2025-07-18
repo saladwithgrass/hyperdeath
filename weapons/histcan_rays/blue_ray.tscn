@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bym8xqibp8xts"]
 
-[ext_resource type="Script" uid="uid://bvirif58gt6d4" path="res://player/weapons/railgun/blue_ray.gd" id="1_txc86"]
-[ext_resource type="Material" uid="uid://dnjubmw6th8a4" path="res://player/weapons/railgun/blue_ray.tres" id="2_ni4p4"]
+[ext_resource type="Script" uid="uid://bvirif58gt6d4" path="res://weapons/histcan_rays/blue_ray.gd" id="1_txc86"]
+[ext_resource type="Material" uid="uid://dnjubmw6th8a4" path="res://weapons/histcan_rays/blue_ray.tres" id="2_ni4p4"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_nanfq"]
 top_radius = 0.1

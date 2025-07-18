@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cqrqolnlawiir"]
 
-[ext_resource type="PackedScene" uid="uid://c40x1xi87c1dp" path="res://player/weapons/generic_weapon/generic_weapon.tscn" id="1_silhh"]
-[ext_resource type="Script" uid="uid://bidmf3uejhqmy" path="res://player/weapons/pistol/pistol.gd" id="2_7f6od"]
+[ext_resource type="PackedScene" uid="uid://c40x1xi87c1dp" path="res://weapons/weapons/generic_weapon/generic_weapon.tscn" id="1_silhh"]
+[ext_resource type="Script" uid="uid://bidmf3uejhqmy" path="res://weapons/weapons/pistol/pistol.gd" id="2_7f6od"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0i4rs"]
 albedo_color = Color(0.136826, 0.136826, 0.136826, 1)

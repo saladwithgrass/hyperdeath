@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://uk1wb1gcnv0q"]
 
 [ext_resource type="Script" uid="uid://e4kytsgbb8yj" path="res://enemies/generic_enemy/generic_enemy.gd" id="1_jqfit"]
-[ext_resource type="PackedScene" uid="uid://7f7a75jye8wi" path="res://misc_objects/bullet/bullet.tscn" id="2_h6fu2"]
+[ext_resource type="PackedScene" uid="uid://7f7a75jye8wi" path="res://weapons/projectiles/bullet/bullet.tscn" id="2_h6fu2"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_jqfit"]
 

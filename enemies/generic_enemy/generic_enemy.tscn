@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cn4c0rsf8b0wi"]
 
 [ext_resource type="Script" uid="uid://e4kytsgbb8yj" path="res://enemies/generic_enemy/generic_enemy.gd" id="1_8ywa3"]
-[ext_resource type="PackedScene" uid="uid://7f7a75jye8wi" path="res://misc_objects/bullet/bullet.tscn" id="2_ll3q7"]
+[ext_resource type="PackedScene" uid="uid://7f7a75jye8wi" path="res://weapons/projectiles/bullet/bullet.tscn" id="2_ll3q7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cb5rn"]
 

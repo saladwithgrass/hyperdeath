@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://b1k8dolm13n1l" path="res://assets/textures/cursor.png" id="1_n1jjx"]
 [ext_resource type="Script" uid="uid://cu6efg126e10t" path="res://player/player.gd" id="1_p2a6n"]
-[ext_resource type="PackedScene" uid="uid://cqrqolnlawiir" path="res://player/weapons/pistol/pistol.tscn" id="2_6m2sf"]
+[ext_resource type="PackedScene" uid="uid://cqrqolnlawiir" path="res://weapons/weapons/pistol/pistol.tscn" id="2_6m2sf"]
 [ext_resource type="Shader" uid="uid://ddwb5j0jm7iq3" path="res://assets/shader/wireframe.gdshader" id="2_rgyib"]
 [ext_resource type="PackedScene" uid="uid://bhwitv71nor4g" path="res://player/main_hud/player_hud.tscn" id="2_t5gin"]
-[ext_resource type="PackedScene" uid="uid://5l7gk84ff7bb" path="res://player/weapons/assault_rifle/assault_rifle.tscn" id="3_38xsd"]
+[ext_resource type="PackedScene" uid="uid://5l7gk84ff7bb" path="res://weapons/weapons/assault_rifle/assault_rifle.tscn" id="3_38xsd"]
 [ext_resource type="Texture2D" uid="uid://ctei0e6qkqbpw" path="res://assets/textures/floor.png" id="3_s7yut"]
-[ext_resource type="PackedScene" uid="uid://byvb2lvonwfuk" path="res://player/weapons/railgun/railgun_v_1.tscn" id="4_nsd2h"]
+[ext_resource type="PackedScene" uid="uid://byvb2lvonwfuk" path="res://weapons/weapons/railgun/railgun_v_1.tscn" id="4_nsd2h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5jh1l"]
 

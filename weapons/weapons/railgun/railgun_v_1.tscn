@@ -1,7 +1,7 @@
 [gd_scene load_steps=46 format=4 uid="uid://byvb2lvonwfuk"]
 
-[ext_resource type="Script" uid="uid://darxf88val3bq" path="res://player/weapons/railgun/railgun_v_1.gd" id="1_0ik2e"]
-[ext_resource type="PackedScene" uid="uid://c40x1xi87c1dp" path="res://player/weapons/generic_weapon/generic_weapon.tscn" id="1_objat"]
+[ext_resource type="Script" uid="uid://darxf88val3bq" path="res://weapons/weapons/railgun/railgun_v_1.gd" id="1_0ik2e"]
+[ext_resource type="PackedScene" uid="uid://c40x1xi87c1dp" path="res://weapons/weapons/generic_weapon/generic_weapon.tscn" id="1_objat"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0jqqe"]
 resource_name = "Material"

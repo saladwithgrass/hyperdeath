@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c40x1xi87c1dp"]
 
-[ext_resource type="Script" uid="uid://co2mkyh1v138i" path="res://player/weapons/generic_weapon/generic_weapon.gd" id="1_wwo26"]
+[ext_resource type="Script" uid="uid://co2mkyh1v138i" path="res://weapons/weapons/generic_weapon/generic_weapon.gd" id="1_wwo26"]
 
 [node name="GenericWeapon" type="Node3D"]
 script = ExtResource("1_wwo26")
